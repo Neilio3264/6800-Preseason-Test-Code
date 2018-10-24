@@ -36,7 +36,7 @@ public:
 
 	void AutonomousPeriodic() override {
 		// Drive for 2 seconds
-		if (m_timer.Get() < 2.0) {
+		if (m_timer.Get() < 4.0) {
 			// Drive forwards half speed
 			m_robotDrive.ArcadeDrive(-0.5, 0.0);
 		} else {
