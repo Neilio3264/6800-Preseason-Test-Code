@@ -61,11 +61,11 @@ public:
 			intake_left.Set(-gamepad.GetTriggerAxis(frc::GenericHID::JoystickHand::kRightHand));
 		}
 
-		if (gamepad.GetY(frc::GenericHID::JoystickHand::kLeftHand) < -0.05) {
+		if (gamepad.GetY(frc::GenericHID::JoystickHand::kLeftHand) < -0.01) {
 			liftMotorA.Set(-0.2);
 			liftMotorB.Set(-0.2);
 		}
-		else if(gamepad.GetY(frc::GenericHID::JoystickHand::kLeftHand) > 0.05) {
+		else if(gamepad.GetY(frc::GenericHID::JoystickHand::kLeftHand) > 0.01) {
 			liftMotorA.Set(0.6);
 			liftMotorB.Set(0.6);
 		}
