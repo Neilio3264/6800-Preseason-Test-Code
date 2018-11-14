@@ -14,6 +14,8 @@ class ExampleSubsystem : public frc::Subsystem {
   ExampleSubsystem();
   void InitDefaultCommand() override;
 
+  void Periodic();
+
  private:
   // It's desirable that everything possible under private except
   // for methods that implement subsystem capabilities

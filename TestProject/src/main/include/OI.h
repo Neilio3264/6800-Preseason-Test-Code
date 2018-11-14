@@ -20,8 +20,10 @@ class OI {
 
   static OI* GetInstance();
   
-  private:
-    OI();
-    static OI* m_instance;
+  OI();
+
+private:
+  static OI* m_instance;
+  
 };
 #endif

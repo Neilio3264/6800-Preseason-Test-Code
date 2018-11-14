@@ -8,6 +8,7 @@
 #include "OI.h"
 
 #include <WPILib.h>
+using namespace std;
 
 OI::OI() {
   // Process operator interface input here.
@@ -15,12 +16,13 @@ OI::OI() {
   rightJoyDrive = new Joystick(2);
 
   gamepad = new XboxController(0);
+}
 
-  OI* OI::GetInstance() {
+OI* OI::GetInstance() {
 	if (m_instance ==  0) {
-		std::cout << "info: GetInstance Creating OperatorInterface Class" << std::endl;
+		printf("info: GetInstance Creating OperatorInterface Class\n");
 		m_instance = new OI();
 	}
 	return m_instance;
 }
-}
+

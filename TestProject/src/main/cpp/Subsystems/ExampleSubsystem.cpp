@@ -16,5 +16,9 @@ void ExampleSubsystem::InitDefaultCommand() {
   // SetDefaultCommand(new MySpecialCommand());
 }
 
+void ExampleSubsystem::Periodic() {
+  
+}
+
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
