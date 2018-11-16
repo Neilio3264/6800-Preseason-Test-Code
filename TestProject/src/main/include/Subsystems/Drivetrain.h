@@ -21,6 +21,7 @@ private:
 public:
 	PowerDistributionPanel* m_pdp;
 	static Drivetrain* GetInstance();
+
 	void InitDefaultCommand();
 	void Tank(float leftstick, float rightstick);
 	void SetLeft(float val);

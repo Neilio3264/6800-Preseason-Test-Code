@@ -8,7 +8,6 @@
 #include "OI.h"
 
 #include <WPILib.h>
-using namespace std;
 
 OI::OI() {
   // Process operator interface input here.

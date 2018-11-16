@@ -1,5 +1,5 @@
 #include "Subsystems/Drivetrain.h"
-#include "../../Commands/DriveWithJoystick.cpp"
+#include "../../include/Commands/DriveWithJoystick.h"
 
 #include "RobotMap.h"
 #include <cmath>
