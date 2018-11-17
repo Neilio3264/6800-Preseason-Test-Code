@@ -14,12 +14,12 @@
 #include "Commands/ExampleCommand.h"
 #include "Commands/MyAutoCommand.h"
 #include "OI.h"
-#include "Subsystems/ExampleSubsystem.h"
+#include "Subsystems/Drivetrain.h"
 
 class Robot : public frc::TimedRobot {
  public:
-  static ExampleSubsystem m_subsystem;
-  static OI m_oi;
+  static Drivetrain *_drivetrain;
+  static OI *_oi;
 
   void RobotInit() override;
   void RobotPeriodic() override;

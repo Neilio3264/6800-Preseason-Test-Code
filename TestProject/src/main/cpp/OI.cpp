@@ -16,12 +16,3 @@ OI::OI() {
 
   gamepad = new XboxController(0);
 }
-
-OI* OI::GetInstance() {
-	if (m_instance ==  0) {
-		printf("info: GetInstance Creating OperatorInterface Class\n");
-		m_instance = new OI();
-	}
-	return m_instance;
-}
-

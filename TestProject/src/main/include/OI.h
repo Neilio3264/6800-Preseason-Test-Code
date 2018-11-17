@@ -12,18 +12,12 @@
 
 class OI {
  public:
+  
+  OI();
 
   Joystick* leftJoyDrive;
   Joystick* rightJoyDrive;
 
   XboxController* gamepad;
-
-  static OI* GetInstance();
-  
-  OI();
-
-private:
-  static OI* m_instance;
-  
 };
 #endif

@@ -6,7 +6,7 @@
 class PIDController {
 
 private:
-    PIDController(double p, double i, double d, double sp);
+    PIDController(double p, double i, double d, double setpoint, double startValue, double acc);
     double _kp;
     double _ki;
     double _kd;
@@ -23,12 +23,12 @@ private:
 
 public:
 
-    void setKP(double kp);
-    double getKP();
-    void setKI(double ki);
-    double getKI();
-    void setKD(double kd);
-    double getKD();
+    void setkP(double kp);
+    double getkP();
+    void setkI(double ki);
+    double getkI();
+    void setkD(double kd);
+    double getkD();
 
     double P_Loop(double error, double p, double measuredValue);
     double PI_Loop(double error, double p, double i, double measuredValue);

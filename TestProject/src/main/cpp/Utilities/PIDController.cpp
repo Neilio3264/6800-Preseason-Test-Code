@@ -21,28 +21,28 @@ PIDController::PIDController(double p, double i, double d, double setpoint, doub
     
 }
 
-void PIDController::setKp(double p) {
-    kp = p;
+void PIDController::setkP(double p) {
+    _kp = p;
 }
 
-void PIDController::setKi(double i) {
-    ki = i;
+void PIDController::setkI(double i) {
+    _ki = i;
 }
 
-void PIDController::setKd(double d) {
-    kd = d;
+void PIDController::setkD(double d) {
+    _kd = d;
 }
 
-double PIDController::getKp() {
-    return kp;
+double PIDController::getkP() {
+    return _kp;
 }
 
-double PIDController::getKi() {
-    return ki;
+double PIDController::getkI() {
+    return _ki;
 }
 
-double PIDController::getKd() {
-    return kd;
+double PIDController::getkD() {
+    return _kd;
 }
 
 
@@ -50,14 +50,14 @@ double PIDController::PID_Loop(double setpoint, double p, double i, double d, do
 
 
     double _timeDiff = _timer.Get() - _lastTime;
-    double totalError = setpoint - startValue;
+    double totalError = setpoint - _startValue;
     _prevError = _currError;
     _currError = setpoint - measuredValue;
-    _integral += timeDiff * _currError;
+    _integral += _timeDiff * _currError;
 
-    output = _currError * setpoint + (_integral) + (_currError - _prevError) / (_timeDiff);
+    double output = _currError * setpoint + (_integral) + (_currError - _prevError) / (_timeDiff);
 
-    _lastTime = timer.Get();
+    _lastTime = _timer.Get();
 
     return output;
 

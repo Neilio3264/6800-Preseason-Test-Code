@@ -5,8 +5,6 @@
 #include <cmath>
 
 
-Drivetrain *Drivetrain::m_instance = 0;
-
 Drivetrain::Drivetrain() : Subsystem("Drivetrain") {
 
     leftDrive = new VictorSP(DRIVE_LEFTMOTOR);
@@ -18,13 +16,6 @@ Drivetrain::Drivetrain() : Subsystem("Drivetrain") {
 
 	//PDP
 	m_pdp = new PowerDistributionPanel();
-}
-
-Drivetrain* Drivetrain::GetInstance() {
-	if (m_instance ==  0) {
-		m_instance = new Drivetrain();
-	}
-	return m_instance;
 }
 
 void Drivetrain::InitDefaultCommand() {

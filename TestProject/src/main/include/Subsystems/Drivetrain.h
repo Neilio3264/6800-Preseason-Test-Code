@@ -14,13 +14,11 @@ private:
 
 	RobotDrive *m_drive;
 
-	Drivetrain();
-	static Drivetrain *m_instance;
-
 	bool m_closedLoop = 0;
 public:
+	Drivetrain();
+
 	PowerDistributionPanel* m_pdp;
-	static Drivetrain* GetInstance();
 
 	void InitDefaultCommand();
 	void Tank(float leftstick, float rightstick);

@@ -2,20 +2,20 @@
 #include "Robot.h"
 
 DriveWithJoystick::DriveWithJoystick() {
-    Requires(Drivetrain::GetInstance());
+    Requires(Robot::_drivetrain);
 }
 
 void DriveWithJoystick::Initialize() {}
 
 void DriveWithJoystick::Execute() {
-    Drivetrain::GetInstance()->Tank(OI::GetInstance()->leftJoyDrive->GetRawAxis(1), OI::GetInstance()->rightJoyDrive->GetRawAxis(1));
+    Robot::_drivetrain->m
 }
 
 bool DriveWithJoystick::IsFinished() { return false; }
 
 void DriveWithJoystick::End() {
 
-    Drivetrain::GetInstance()->Tank(0, 0);
+    Robot::_drivetrain->Tank(0, 0);
 
 }
 

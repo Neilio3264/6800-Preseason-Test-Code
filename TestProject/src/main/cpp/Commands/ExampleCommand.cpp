@@ -11,7 +11,7 @@
 
 ExampleCommand::ExampleCommand() {
   // Use Requires() here to declare subsystem dependencies
-  Requires(&Robot::m_subsystem);
+  Requires(Robot::_drivetrain);
 }
 
 // Called just before this Command runs the first time
