@@ -19,5 +19,8 @@ class OI {
   Joystick* rightJoyDrive;
 
   XboxController* gamepad;
+
+  Button* pedal;
+
 };
 #endif

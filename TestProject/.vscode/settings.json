@@ -13,5 +13,6 @@
   },
   "wpilib.online": true,
   "C_Cpp.intelliSenseEngineFallback": "Disabled",
-  "C_Cpp.errorSquiggles": "Enabled"
+  "C_Cpp.errorSquiggles": "Enabled",
+  "wpilib.autoSaveOnDeploy": true
 }

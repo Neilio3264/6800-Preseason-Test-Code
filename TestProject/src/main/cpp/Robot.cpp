@@ -15,6 +15,7 @@ Drivetrain *Robot::_drivetrain = 0;
 void Robot::RobotInit() {
   
   _drivetrain = new Drivetrain();
+  _elevator = new Elevator();
   _oi = new OI();
 
   m_chooser.AddDefault("Default Auto", &m_defaultAuto);

@@ -8,7 +8,7 @@ DriveWithJoystick::DriveWithJoystick() {
 void DriveWithJoystick::Initialize() {}
 
 void DriveWithJoystick::Execute() {
-    Robot::_drivetrain->m
+    Robot::_drivetrain->Tank(leftJoyDrive.GetRawAxis(1), rightJoyDrive.GetRawAxis(1));
 }
 
 bool DriveWithJoystick::IsFinished() { return false; }

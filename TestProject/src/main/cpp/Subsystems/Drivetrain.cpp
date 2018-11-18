@@ -14,6 +14,8 @@ Drivetrain::Drivetrain() : Subsystem("Drivetrain") {
 
 	m_drive = new RobotDrive(leftDrive, rightDrive);
 
+	shifter = new Solenoid(SHIFTER);
+
 	//PDP
 	m_pdp = new PowerDistributionPanel();
 }
@@ -22,35 +24,17 @@ void Drivetrain::InitDefaultCommand() {
 	SetDefaultCommand(new DriveWithJoystick());
 }
 
-void Drivetrain::Tank(float leftstick, float rightstick) {
-
-	m_drive->TankDrive(leftstick, rightstick);
-	
-}
-
 void Drivetrain::SetLeft(float val) {
 	leftDrive->Set(val);
-	frc::SmartDashboard::PutNumber("SetLeft",val);
+	frc::SmartDashboard::PutNumber("SetLeft", val);
 }
-
 
 void Drivetrain::SetRight(float val) {
 	rightDrive->Set(val);
-	frc::SmartDashboard::PutNumber("SetRight",val);
+	frc::SmartDashboard::PutNumber("SetRight", val);
 }
 
-
-double Drivetrain::GetRobotCurrent(double val) {
-	val = m_pdp->GetTotalCurrent();
-	return val;
+void SetGear(bool low) {
+	shifter.Set(low);
 }
 
-double Drivetrain::GetRobotPower(double val) {
-	val = m_pdp->GetTotalPower();
-	return val;
-}
-
-double Drivetrain::GetRobotEnergy(double val) {
-	val = m_pdp->GetTotalEnergy();
-	return val;
-}

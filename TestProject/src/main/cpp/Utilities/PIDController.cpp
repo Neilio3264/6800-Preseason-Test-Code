@@ -55,7 +55,7 @@ double PIDController::PID_Loop(double setpoint, double p, double i, double d, do
     _currError = setpoint - measuredValue;
     _integral += _timeDiff * _currError;
 
-    double output = _currError * setpoint + (_integral) + (_currError - _prevError) / (_timeDiff);
+    double output = _currError * setpoint * p + (_integral) * i + (_currError - _prevError) / (_timeDiff) * d;
 
     _lastTime = _timer.Get();
 

@@ -5,17 +5,10 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "OI.h"
+#ifndef CONSTANTS_H
+#define CONSTANTS_H
 
-#include <WPILib.h>
+//Motor Controller IDs
+constexpr double ELEVATOR_BASE_POWER = 0.08;
 
-OI::OI() {
-  // Process operator interface input here.
-  leftJoyDrive = new Joystick(1);
-  rightJoyDrive = new Joystick(2);
-
-  gamepad = new XboxController(0);
-
-  pedal = new Button(3);
-
-}
+#endif  // ROBOTMAP_H
