@@ -17,6 +17,7 @@ void Robot::RobotInit() {
   _drivetrain = new Drivetrain();
   _elevator = new Elevator();
   _oi = new OI();
+  _intake = new Intake();
 
   m_chooser.AddDefault("Default Auto", &m_defaultAuto);
   m_chooser.AddObject("My Auto", &m_myAuto);

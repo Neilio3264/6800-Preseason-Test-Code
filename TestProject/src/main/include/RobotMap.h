@@ -36,8 +36,8 @@ constexpr int SHIFTER               = 1; // NOTE: WRONG PORT (PROBABLY)
 
 constexpr int CLAMPER               = 2; // NOTE: WRONG PORT (PROBABLY)
 
-constexpr int INTAKE_CUBE_MOTOR_A 	= 14; // NOTE: WRONG PORT (PROBABLY [AGAIN])
-constexpr int INTAKE_CUBE_MOTOR_B   = 13; // NOTE: WRONG PORT (PROBABLY [AGAIN])
-constexpr int INTAKE_ANGLE_MOTOR	= 12;
+constexpr int INTAKE_CUBE_MOTOR_A 	= 0;
+constexpr int INTAKE_CUBE_MOTOR_B   = 1; 
+constexpr int INTAKE_ANGLE_MOTOR	= 12; // NOTE: WRONG PORT (PROBABLY)
 
 #endif  // ROBOTMAP_H
