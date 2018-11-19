@@ -8,7 +8,7 @@ Shift::Shift() {
 void Shift::Initialize() {}
 
 void Shift::Execute() {
-    Robot::_drivetrain->SetGear(pedal->WhileHeld());
+    //Robot::_drivetrain->SetGear(pedal->WhileHeld());
 }
 
 bool Shift::IsFinished() { 

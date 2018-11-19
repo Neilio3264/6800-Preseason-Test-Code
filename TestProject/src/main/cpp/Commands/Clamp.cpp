@@ -9,7 +9,7 @@ Clamp::Clamp() {
 void Clamp::Initialize() {}
 
 void Clamp::Execute() {
-    Robot::_intake->Clamp(gamepad.GetBumper(0));
+    Robot::_intake->Clamp(Robot::_oi->getGamepad()->GetBumper(GenericHID::JoystickHand(0)));
 }
 
 bool Clamp::IsFinished() { return false; }

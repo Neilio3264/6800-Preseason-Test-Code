@@ -5,6 +5,8 @@
 #include "VictorSP.h"
 #include <Solenoid.h>
 #include "RobotMap.h"
+#include "WPILib.h"
+#include "PowerDistributionPanel.h"
 
 class Drivetrain : public Subsystem {
 private:

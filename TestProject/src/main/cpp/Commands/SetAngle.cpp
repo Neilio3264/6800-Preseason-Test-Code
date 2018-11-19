@@ -10,7 +10,7 @@ SetAngle::SetAngle() {
 void SetAngle::Initialize() {}
 
 void SetAngle::Execute() {
-    Robot::_intake->SetAngle(abs(gamepad->GetY(1) > .05) ? gamepad->GetY() : 0); // 0 = left, 1 = right
+    Robot::_intake->SetAngle(abs(Robot::_oi->getGamepad()->GetY(GenericHID::JoystickHand(1)) > .05) ? Robot::_oi->getGamepad()->GetY(GenericHID::JoystickHand(1)) : 0); // 0 = left, 1 = right
 }
 
 bool SetAngle::IsFinished() { 

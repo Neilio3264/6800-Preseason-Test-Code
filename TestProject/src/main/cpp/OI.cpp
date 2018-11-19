@@ -7,8 +7,6 @@
 
 #include "OI.h"
 
-#include <WPILib.h>
-
 OI::OI() {
   // Process operator interface input here.
   leftJoyDrive = new Joystick(1);
@@ -16,6 +14,18 @@ OI::OI() {
 
   gamepad = new XboxController(0);
 
-  pedal = new SendableBase(3);
+  //pedal = new Button(3);
 
+}
+
+Joystick* OI::getLeftJoyDrive() {
+  return leftJoyDrive;
+}
+
+Joystick* OI::getRightJoyDrive() {
+  return rightJoyDrive;
+}
+
+XboxController* OI::getGamepad() {
+  return gamepad;
 }

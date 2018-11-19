@@ -9,7 +9,7 @@ IntakeOut::IntakeOut() {
 void IntakeOut::Initialize() {}
 
 void IntakeOut::Execute() {
-    Robot::_intake->SetIntakeSpeedOut(gamepad.GetTriggerAxis(0));
+    Robot::_intake->SetIntakeSpeedOut(Robot::_oi->getGamepad()->GetTriggerAxis(GenericHID::JoystickHand(0)));
 }
 
 bool IntakeOut::IsFinished() { return false; }

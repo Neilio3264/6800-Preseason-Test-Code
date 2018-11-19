@@ -3,6 +3,7 @@
 
 #include <Subsystems/Elevator.h> 
 #include "OI.h"
+#include "WPILib.h"
 
 class ElevatorMove : public Command {
 

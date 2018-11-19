@@ -9,8 +9,8 @@ DriveWithJoystick::DriveWithJoystick() {
 void DriveWithJoystick::Initialize() {}
 
 void DriveWithJoystick::Execute() {
-    Robot::_drivetrain->SetLeft(leftJoyDrive.GetRawAxis(1));
-    Robot::_drivetrain->SetRight(rightJoyDrive.GetRawAxis(1));
+    Robot::_drivetrain->SetLeft(Robot::_oi->getLeftJoyDrive()->GetX());
+    Robot::_drivetrain->SetRight(Robot::_oi->getLeftJoyDrive()->GetY());
 }
 
 bool DriveWithJoystick::IsFinished() { return false; }

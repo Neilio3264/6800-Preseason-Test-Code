@@ -9,7 +9,7 @@ IntakeIn::IntakeIn() {
 void IntakeIn::Initialize() {}
 
 void IntakeIn::Execute() {
-    Robot::_intake->SetIntakeSpeedIn(gamepad.GetTriggerAxis(1));
+    Robot::_intake->SetIntakeSpeedIn(Robot::_oi->getGamepad()->GetTriggerAxis(GenericHID::JoystickHand(1)));
 }
 
 bool IntakeIn::IsFinished() { return false; }

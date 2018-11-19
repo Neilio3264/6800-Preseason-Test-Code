@@ -7,18 +7,23 @@
 
 #ifndef OI_H
 #define OI_H
+#include "WPILib.h"
+#include <XboxController.h>
+#include <Joystick.h>
+#include <Buttons/Button.h>
 
 class OI {
- public:
-  
-  OI();
-
+ private:
   Joystick* leftJoyDrive;
   Joystick* rightJoyDrive;
 
   XboxController* gamepad;
+ public:
+  Joystick* getLeftJoyDrive();
+  Joystick* getRightJoyDrive();
+  XboxController* getGamepad();
 
-  SendableBase* pedal;
-
+  //Button *pedal;
+  OI();
 };
 #endif
