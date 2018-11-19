@@ -2,6 +2,7 @@
 
 #include "RobotMap.h"
 #include <cmath>
+#include <WPILib.h>
 
 
 Intake::Intake() : Subsystem("Intake") {
@@ -12,21 +13,21 @@ Intake::Intake() : Subsystem("Intake") {
     _clamp = new Solenoid(CLAMPER);
 }
 
-void Clamp(bool isClamped) {
-    _clamp.Set(!isClamped); // left_bumper
+void Intake::Clamp(bool isClamped) {
+    _clamp->Set(!isClamped); // left_bumper
 }
 
-void SetIntakeSpeedIn(double power) {
-    _intakeA.Set(power);
-    _intakeB.Set(power); // right_trigger
+void Intake::SetIntakeSpeedIn(double power) {
+    _intakeA->Set(power);
+    _intakeB->Set(power); // right_trigger
 }
 
-void SetIntakeSpeedOut(double power) {
+void Intake::SetIntakeSpeedOut(double power) {
     SetIntakeSpeedIn(-power); // left_trigger
 }
 
-void SetAngle(double power) {
-    _angle.Set(power); // right_stick y
+void Intake::SetAngle(double power) {
+    _angle->Set(power); // right_stick y
 
     // **LIFT IS LEFT STICK Y
 }

@@ -8,8 +8,6 @@
 #ifndef OI_H
 #define OI_H
 
-#include "WPILib.h"
-
 class OI {
  public:
   
@@ -20,7 +18,7 @@ class OI {
 
   XboxController* gamepad;
 
-  Button* pedal;
+  SendableBase* pedal;
 
 };
 #endif

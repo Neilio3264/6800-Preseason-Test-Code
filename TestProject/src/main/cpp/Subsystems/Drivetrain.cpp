@@ -3,6 +3,7 @@
 
 #include "RobotMap.h"
 #include <cmath>
+#include <WPILib.h>
 
 
 Drivetrain::Drivetrain() : Subsystem("Drivetrain") {
@@ -30,7 +31,7 @@ void Drivetrain::SetRight(float val) {
 	frc::SmartDashboard::PutNumber("SetRight", val);
 }
 
-void SetGear(bool low) {
-	_shifter.Set(low);
+void Drivetrain::SetGear(bool low) {
+	_shifter->Set(low);
 }
 

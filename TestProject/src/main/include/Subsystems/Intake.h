@@ -2,9 +2,9 @@
 #define Intake_H
 
 #include <Commands/Subsystem.h>
-#include "WPILib.h"
 #include "Spark.h"
 #include "Talon.h"
+#include "Solenoid.h"
 #include "RobotMap.h"
 
 class Intake : public Subsystem {

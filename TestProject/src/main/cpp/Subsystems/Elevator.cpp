@@ -2,6 +2,7 @@
 
 #include "RobotMap.h"
 #include <cmath>
+#include <WPILib.h>
 
 
 Elevator::Elevator() : Subsystem("Elevator") {
@@ -15,11 +16,11 @@ void Elevator::InitDefaultCommand() {
 	// SetDefaultCommand(new DriveWithJoystick());
 }
 
-void Start(double power) {
-    liftMotorA.Set(power);
-    liftMotorB.Set(power);
+void Elevator::Start(double power) {
+    liftMotorA->Set(power);
+    liftMotorB->Set(power);
 }
 
-void Stop() {
+void Elevator::Stop() {
     Start(0);
 }

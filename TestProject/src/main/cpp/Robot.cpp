@@ -7,6 +7,7 @@
 
 #include "Robot.h"
 
+#include <WPILib.h>
 #include <Commands/Scheduler.h>
 #include <SmartDashboard/SmartDashboard.h>
 

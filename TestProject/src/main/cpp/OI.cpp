@@ -16,6 +16,6 @@ OI::OI() {
 
   gamepad = new XboxController(0);
 
-  pedal = new Button(3);
+  pedal = new SendableBase(3);
 
 }

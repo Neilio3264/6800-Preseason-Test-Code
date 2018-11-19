@@ -2,9 +2,8 @@
 #define Drivetrain_H
 
 #include <Commands/Subsystem.h>
-#include "WPILib.h"
 #include "VictorSP.h"
-#include "Solenoid.h"
+#include <Solenoid.h>
 #include "RobotMap.h"
 
 class Drivetrain : public Subsystem {
@@ -12,8 +11,6 @@ private:
 
 	VictorSP *_leftDrive;
     VictorSP *_rightDrive;
-
-	RobotDrive *_drive;
 
 	Solenoid *_shifter;
 
