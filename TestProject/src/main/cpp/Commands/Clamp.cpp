@@ -1,5 +1,6 @@
 #include "Commands/Clamp.h"
 #include "Robot.h"
+#include "OI.h"
 
 Clamp::Clamp() {
     Requires(Robot::_intake);

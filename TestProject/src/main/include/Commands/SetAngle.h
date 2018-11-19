@@ -1,5 +1,5 @@
-#ifndef SetAngle.H
-#define SetAngle.H
+#ifndef SetAngle_H
+#define SetAngle_H
 
 #include <Subsystems/Intake.h> 
 #include "OI.h"

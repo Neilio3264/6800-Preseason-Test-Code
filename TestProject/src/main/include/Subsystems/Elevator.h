@@ -8,9 +8,7 @@
 
 class Elevator : public Subsystem {
 private:
-
-    
-
+ 
 	VictorSP *liftMotorA;
     VictorSP *liftMotorB;
 

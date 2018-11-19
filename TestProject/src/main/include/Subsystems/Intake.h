@@ -20,7 +20,7 @@ public:
 	Intake();
     void Clamp(bool isClamped);
     void SetIntakeSpeedIn(double power);
-    void SetIntakeSpeedOut(double power)
+    void SetIntakeSpeedOut(double power);
     void SetAngle(double power);
 
 };

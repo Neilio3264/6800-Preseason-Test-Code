@@ -1,5 +1,5 @@
-#ifndef Shift.H
-#define Shift.H
+#ifndef Shift_H
+#define Shift_H
 
 #include <Subsystems/Drivetrain.h> 
 #include "OI.h"

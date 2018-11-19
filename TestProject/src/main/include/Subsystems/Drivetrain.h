@@ -4,6 +4,7 @@
 #include <Commands/Subsystem.h>
 #include "WPILib.h"
 #include "VictorSP.h"
+#include "Solenoid.h"
 #include "RobotMap.h"
 
 class Drivetrain : public Subsystem {

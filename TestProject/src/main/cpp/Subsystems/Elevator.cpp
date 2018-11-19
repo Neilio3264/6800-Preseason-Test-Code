@@ -1,10 +1,10 @@
-#include "Subsystems/Elevator.h"
+#include "../../include/Subsystems/Elevator.h"
 
 #include "RobotMap.h"
 #include <cmath>
 
 
-ELevator::ELevator() : Subsystem("Elevator") {
+Elevator::Elevator() : Subsystem("Elevator") {
 
     liftMotorA = new VictorSP(LIFT_MOTOR_A);
     liftMotorB = new VictorSP(LIFT_MOTOR_B);

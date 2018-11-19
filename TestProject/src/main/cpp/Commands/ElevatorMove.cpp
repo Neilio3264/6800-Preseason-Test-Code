@@ -1,6 +1,7 @@
 #include "Commands/ElevatorMove.h"
 #include "Robot.h"
 #include <cmath>
+#include "OI.h"
 #include "../../include/Utilities/Constants.h"
 
 ElevatorMove::ElevatorMove() {

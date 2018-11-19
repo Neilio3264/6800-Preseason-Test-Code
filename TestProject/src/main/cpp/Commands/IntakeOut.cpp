@@ -1,5 +1,6 @@
 #include "Commands/IntakeOut.h"
 #include "Robot.h"
+#include "OI.h"
 
 IntakeOut::IntakeOut() {
     Requires(Robot::_intake);

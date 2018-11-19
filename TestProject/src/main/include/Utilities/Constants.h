@@ -9,6 +9,6 @@
 #define CONSTANTS_H
 
 //Motor Controller IDs
-constexpr double ELEVATOR_BASE_POWER = 0.08;
+constexpr double LIFT_BASE_POWER = 0.08;
 
 #endif  // ROBOTMAP_H

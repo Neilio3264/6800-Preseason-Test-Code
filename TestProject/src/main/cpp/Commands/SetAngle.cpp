@@ -1,5 +1,6 @@
 #include "Commands/SetAngle.h"
 #include "Robot.h"
+#include "OI.h"
 #include <cmath>
 
 SetAngle::SetAngle() {
@@ -12,17 +13,17 @@ void SetAngle::Execute() {
     Robot::_intake->SetAngle(abs(gamepad->GetY(1) > .05) ? gamepad->GetY() : 0); // 0 = left, 1 = right
 }
 
-bool ElevatorMove::IsFinished() { 
+bool SetAngle::IsFinished() { 
     
     return false;
- }
+}
 
-void ElevatorMove::End() {
+void SetAngle::End() {
     
     Robot::_intake->SetAngle(0);
 }
 
-void ElevatorMove::Interrupted() {
+void SetAngle::Interrupted() {
 
 }
 

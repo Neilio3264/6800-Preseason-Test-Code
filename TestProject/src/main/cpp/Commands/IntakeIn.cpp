@@ -1,5 +1,6 @@
 #include "Commands/IntakeIn.h"
 #include "Robot.h"
+#include "OI.h"
 
 IntakeIn::IntakeIn() {
     Requires(Robot::_intake);
@@ -11,15 +12,15 @@ void IntakeIn::Execute() {
     Robot::_intake->SetIntakeSpeedIn(gamepad.GetTriggerAxis(1));
 }
 
-bool DriveWithJoystick::IsFinished() { return false; }
+bool IntakeIn::IsFinished() { return false; }
 
-void DriveWithJoystick::End() {
+void IntakeIn::End() {
 
     Robot::_intake->SetIntakeSpeedIn(0);
 
 }
 
-void DriveWithJoystick::Interrupted() {}
+void IntakeIn::Interrupted() {}
 
 
 

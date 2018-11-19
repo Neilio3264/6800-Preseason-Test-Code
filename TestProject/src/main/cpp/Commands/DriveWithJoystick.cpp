@@ -1,5 +1,6 @@
 #include "Commands/DriveWithJoystick.h"
 #include "Robot.h"
+#include "OI.h"
 
 DriveWithJoystick::DriveWithJoystick() {
     Requires(Robot::_drivetrain);
@@ -8,14 +9,16 @@ DriveWithJoystick::DriveWithJoystick() {
 void DriveWithJoystick::Initialize() {}
 
 void DriveWithJoystick::Execute() {
-    Robot::_drivetrain->Tank(leftJoyDrive.GetRawAxis(1), rightJoyDrive.GetRawAxis(1));
+    Robot::_drivetrain->SetLeft(leftJoyDrive.GetRawAxis(1));
+    Robot::_drivetrain->SetRight(rightJoyDrive.GetRawAxis(1));
 }
 
 bool DriveWithJoystick::IsFinished() { return false; }
 
 void DriveWithJoystick::End() {
 
-    Robot::_drivetrain->Tank(0, 0);
+    Robot::_drivetrain->SetLeft(0);
+    Robot::_drivetrain->SetRight(0);
 
 }
 
