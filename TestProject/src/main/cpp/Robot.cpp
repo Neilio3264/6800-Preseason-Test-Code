@@ -7,11 +7,13 @@
 
 #include "Robot.h"
 
-#include <WPILib.h>
 #include <Commands/Scheduler.h>
+
+#include <WPILib.h>
+
 #include <SmartDashboard/SmartDashboard.h>
 
-Drivetrain *Robot::_drivetrain = 0;
+//Drivetrain *Robot::_drivetrain = 0;
 
 void Robot::RobotInit() {
   

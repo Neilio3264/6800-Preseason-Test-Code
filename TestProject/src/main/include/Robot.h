@@ -20,10 +20,10 @@
 
 class Robot : public frc::TimedRobot {
  public:
-  static Drivetrain *_drivetrain;
-  static Elevator *_elevator;
-  static OI *_oi;
-  static Intake *_intake;
+  static Drivetrain* _drivetrain;
+  static Elevator* _elevator;
+  static OI* _oi;
+  static Intake* _intake;
   
 
   void RobotInit() override;
