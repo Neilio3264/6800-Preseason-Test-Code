@@ -13,7 +13,10 @@
 
 #include <SmartDashboard/SmartDashboard.h>
 
-//Drivetrain *Robot::_drivetrain = 0;
+Drivetrain *Robot::_drivetrain = 0;
+Elevator *Robot::_elevator = 0;
+OI *Robot::_oi = 0;
+Intake *Robot::_intake = 0;
 
 void Robot::RobotInit() {
   
