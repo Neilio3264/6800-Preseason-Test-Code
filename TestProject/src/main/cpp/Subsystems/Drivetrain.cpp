@@ -6,10 +6,13 @@
 #include <WPILib.h>
 
 
+
 Drivetrain::Drivetrain() : Subsystem("Drivetrain") {
 
     _leftDrive = new VictorSP(DRIVE_LEFTMOTOR);
     _rightDrive = new VictorSP(DRIVE_RIGHTMOTOR);
+
+	_encoder = new Encoder(ENCODER_DRIVE_A, ENCODER_DRIVE_B);
 
 	_shifter = new Solenoid(SHIFTER);
 

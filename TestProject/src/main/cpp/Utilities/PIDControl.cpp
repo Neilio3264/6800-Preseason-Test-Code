@@ -1,10 +1,10 @@
 #include <cmath>
-#include "../../include/Utilities/PIDController.h"
+#include "../../include/Utilities/PIDControl.h"
 #include <Timer.h>
 
 
 
-PIDController::PIDController(double p, double i, double d, double setpoint, double startValue, double acc){
+PIDControl::PIDControl(double p, double i, double d, double setpoint, double startValue, double acc){
     _kp = p;
     _ki = i;
     _kd = d;
@@ -21,32 +21,32 @@ PIDController::PIDController(double p, double i, double d, double setpoint, doub
     
 }
 
-void PIDController::setkP(double p) {
+void PIDControl::setkP(double p) {
     _kp = p;
 }
 
-void PIDController::setkI(double i) {
+void PIDControl::setkI(double i) {
     _ki = i;
 }
 
-void PIDController::setkD(double d) {
+void PIDControl::setkD(double d) {
     _kd = d;
 }
 
-double PIDController::getkP() {
+double PIDControl::getkP() {
     return _kp;
 }
 
-double PIDController::getkI() {
+double PIDControl::getkI() {
     return _ki;
 }
 
-double PIDController::getkD() {
+double PIDControl::getkD() {
     return _kd;
 }
 
 
-double PIDController::PID_Loop(double setpoint, double p, double i, double d, double measuredValue) {
+double PIDControl::PID_Loop(double setpoint, double p, double i, double d, double measuredValue) {
 
 
     double _timeDiff = _timer.Get() - _lastTime;
@@ -63,19 +63,19 @@ double PIDController::PID_Loop(double setpoint, double p, double i, double d, do
 
 }
 
-double PIDController::P_Loop(double setpoint, double p, double measuredValue) {
+double PIDControl::P_Loop(double setpoint, double p, double measuredValue) {
 
     return PID_Loop(setpoint, p, 0, 0, measuredValue);
 
 }
 
-double PIDController::PI_Loop(double setpoint, double p, double i, double measuredValue) {
+double PIDControl::PI_Loop(double setpoint, double p, double i, double measuredValue) {
 
     return PID_Loop(setpoint, p, i, 0, measuredValue);
 
 }
 
-double PIDController::PD_Loop(double setpoint, double p, double d, double measuredValue) {
+double PIDControl::PD_Loop(double setpoint, double p, double d, double measuredValue) {
 
     return PID_Loop(setpoint, p, 0, d, measuredValue);
 

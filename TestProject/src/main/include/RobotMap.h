@@ -32,12 +32,15 @@ constexpr int DRIVE_RIGHTMOTOR	    = 4;
 constexpr int LIFT_MOTOR_A 	    	= 8;
 constexpr int LIFT_MOTOR_B   		= 9;
 
-constexpr int SHIFTER               = 1; // NOTE: WRONG PORT (PROBABLY)
+constexpr int SHIFTER               = 1;  // NOTE: WRONG PORT (PROBABLY)
 
-constexpr int CLAMPER               = 2; // NOTE: WRONG PORT (PROBABLY)
+constexpr int CLAMPER               = 2;  // NOTE: WRONG PORT (PROBABLY)
 
 constexpr int INTAKE_CUBE_MOTOR_A 	= 0;
 constexpr int INTAKE_CUBE_MOTOR_B   = 1; 
 constexpr int INTAKE_ANGLE_MOTOR	= 12; // NOTE: WRONG PORT (PROBABLY)
+
+constexpr int ENCODER_DRIVE_A    = 5;  // NOTE: WRONG PORT (PROBABLY)
+constexpr int ENCODER_DRIVE_B   = 6;  // NOTE: WRONG PORT (PROBABLY)
 
 #endif  // ROBOTMAP_H

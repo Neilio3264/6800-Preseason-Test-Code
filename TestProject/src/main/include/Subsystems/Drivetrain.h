@@ -14,6 +14,8 @@ private:
 	VictorSP *_leftDrive;
     VictorSP *_rightDrive;
 
+	Encoder *_encoder;
+
 	Solenoid *_shifter;
 
 	bool _closedLoop = 0;

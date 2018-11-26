@@ -1,12 +1,11 @@
-#ifndef PIDController_H
-#define PIDController_H
+#ifndef PIDControl_H
+#define PIDControl_H
 
 #include <Timer.h>
 
-class PIDController {
+class PIDControl {
 
 private:
-    PIDController(double p, double i, double d, double setpoint, double startValue, double acc);
     double _kp;
     double _ki;
     double _kd;
@@ -22,6 +21,8 @@ private:
 
 
 public:
+
+    PIDControl(double p, double i, double d, double setpoint, double startValue, double acc);
 
     void setkP(double kp);
     double getkP();
