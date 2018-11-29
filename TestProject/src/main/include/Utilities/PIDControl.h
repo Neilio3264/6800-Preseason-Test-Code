@@ -30,11 +30,13 @@ public:
     double getkI();
     void setkD(double kd);
     double getkD();
+    void setSetpoint(double setpoint);
+    void setStartValue(double startValue);
 
-    double P_Loop(double error, double p, double measuredValue);
-    double PI_Loop(double error, double p, double i, double measuredValue);
-    double PD_Loop(double error, double p, double d, double measuredValue);
-    double PID_Loop(double setpoint, double p, double i, double d, double measuredValue);     
+    double P_Loop(double error, double p, double measuredValue, double acc);
+    double PI_Loop(double error, double p, double i, double measuredValue, double acc);
+    double PD_Loop(double error, double p, double d, double measuredValue, double acc);
+    double PID_Loop(double setpoint, double p, double i, double d, double measuredValue, double acc);     
 };
 
 #endif

@@ -4,7 +4,7 @@
 
 
 
-PIDControl::PIDControl(double p, double i, double d, double setpoint, double startValue, double acc){
+PIDControl::PIDControl(double p, double i, double d, double setpoint, double startValue, double acc) {
     _kp = p;
     _ki = i;
     _kd = d;
@@ -19,6 +19,14 @@ PIDControl::PIDControl(double p, double i, double d, double setpoint, double sta
     _timer.Start();
     _lastTime = _timer.Get();
     
+}
+
+void PIDControl::setSetpoint(double setpoint) {
+    _setpoint = setpoint;
+}
+
+void PIDControl::setStartValue(double startValue) {
+    _startValue = startValue;
 }
 
 void PIDControl::setkP(double p) {
@@ -46,8 +54,11 @@ double PIDControl::getkD() {
 }
 
 
-double PIDControl::PID_Loop(double setpoint, double p, double i, double d, double measuredValue) {
+double PIDControl::PID_Loop(double setpoint, double p, double i, double d, double measuredValue, double acc) {
 
+    if(abs(setpoint - measuredValue) < acc) {
+        return -100;
+    }
 
     double _timeDiff = _timer.Get() - _lastTime;
     double totalError = setpoint - _startValue;
@@ -57,7 +68,7 @@ double PIDControl::PID_Loop(double setpoint, double p, double i, double d, doubl
 
     double output = _currError * setpoint * p + (_integral) * i + (_currError - _prevError) / (_timeDiff) * d;
 
-    _lastTime = _timer.Get();
+    _lastTime = _timer.Get(); // TODO: Find a way to change timer to system time
 
     return output;
 
