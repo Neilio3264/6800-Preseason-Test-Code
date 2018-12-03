@@ -5,12 +5,12 @@
 double ELEVATOR_IDLE_MOTOR_POWER = 0.08;
 
 Elevator::Elevator() : Subsystem("Elevator") {
-    targetSetPoint = 0;
+    targetSetPoint = MANUAL_MODE;
     p_val = .5;
     i_val = .2;
     d_val = .1;
     accuracy = .01;
-    *elevatorPID = new PIDControl(p_val, i_val, d_val, 0, 0, 0);
+    elevatorPID = *new PIDControl(p_val, i_val, d_val, 0, 0, 0);
     dt = 0.02;
 
 }
@@ -20,13 +20,13 @@ double Elevator::CalculateNextOutput(bool set1, bool set2, bool set3, double joy
     if (!InDeadBand(joyVal)) {
         // For sure in manual mode, set targetSetPoint to 0;
         // Return joyVal reading
-        targetSetPoint = 0;
+        targetSetPoint = MANUAL_MODE;
         return joyVal;
     }
     else {
         UpdateTargetSetpoint(set1, set2, set3);
         
-        if(targetSetPoint == 0) { 
+        if (targetSetPoint == MANUAL_MODE) { 
             return ELEVATOR_IDLE_MOTOR_POWER; 
         }
 
@@ -41,10 +41,9 @@ bool Elevator::InDeadBand(double joyVal) {
 }
 
 void Elevator::UpdateTargetSetpoint(bool set1, bool set2, bool set3) {
-    if(set1) { targetSetPoint = 1; }
-    if(set2) { targetSetPoint = 2; }
-    if(set3) { targetSetPoint = 3; }
-
+    if(set1) { targetSetPoint = LOW_SETPOINT; }
+    if(set2) { targetSetPoint = MEDIUM_SETPOINT; }
+    if(set3) { targetSetPoint = HIGH_SETPOINT; }
 }
 
 double Elevator::CalculateNextAutoOutput(int targetSetPoint, double currEncoder, double dt) {
@@ -52,13 +51,13 @@ double Elevator::CalculateNextAutoOutput(int targetSetPoint, double currEncoder,
     double targetEncoder;
 
     switch(targetSetPoint) {
-        case 1: 
+        case LOW_SETPOINT: 
             targetEncoder = .15; //TODO: Update with real setpoint val
             break;
-        case 2: 
+        case MEDIUM_SETPOINT: 
             targetEncoder = .4; //TODO: Update with real setpoint val
             break;
-        case 3: 
+        case HIGH_SETPOINT:
             targetEncoder = .6; //TODO: Update with real setpoint val
             break;
     }
@@ -68,7 +67,7 @@ double Elevator::CalculateNextAutoOutput(int targetSetPoint, double currEncoder,
 
     if(output == -100) {
         return ELEVATOR_IDLE_MOTOR_POWER;
-        targetSetPoint = 0;
+        targetSetPoint = MANUAL_MODE;
     }
 
     return output;

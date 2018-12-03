@@ -8,6 +8,10 @@
 class Elevator : public Subsystem {
 private:
 
+    static constexpr int MANUAL_MODE = 0;
+    static constexpr int LOW_SETPOINT = 1;
+    static constexpr int MEDIUM_SETPOINT = 2;
+    static constexpr int HIGH_SETPOINT = 3;
     double p_val;
     double i_val;
     double d_val;
@@ -27,4 +31,4 @@ public:
 
 };
 
-#endif  
+#endif

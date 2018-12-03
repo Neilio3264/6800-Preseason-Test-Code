@@ -7,6 +7,11 @@
 
 class ElevatorMove : public Command {
 
+private:
+    VictorSP liftMotorA;
+    VictorSP liftMotorB;
+    Encoder liftEncoder;
+
 public:
 
     ElevatorMove();

@@ -43,4 +43,7 @@ constexpr int INTAKE_ANGLE_MOTOR	= 12; // NOTE: WRONG PORT (PROBABLY)
 constexpr int ENCODER_DRIVE_A    = 5;  // NOTE: WRONG PORT (PROBABLY)
 constexpr int ENCODER_DRIVE_B   = 6;  // NOTE: WRONG PORT (PROBABLY)
 
+constexpr int ENCODER_LIFT_A = 8;
+constexpr int ENCODER_LIFT_B = 9;
+
 #endif  // ROBOTMAP_H
