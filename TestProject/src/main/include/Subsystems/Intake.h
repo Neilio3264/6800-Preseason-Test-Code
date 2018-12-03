@@ -2,26 +2,17 @@
 #define Intake_H
 
 #include <Commands/Subsystem.h>
-#include "Spark.h"
-#include "Talon.h"
-#include "Solenoid.h"
-#include "RobotMap.h"
 
 class Intake : public Subsystem {
 private:
-
-    Spark *_intakeA;
-    Spark *_intakeB;
-    Talon *_angle;
-    Solenoid *_clamp;
-
+    static double output[3];
+    bool InDeadBand(double leftTrig, double rightTrig);
+    bool InDeadBand(double rightStick);
 
 public:
-	Intake();
-    void Clamp(bool isClamped);
-    void SetIntakeSpeedIn(double power);
-    void SetIntakeSpeedOut(double power);
-    void SetAngle(double power);
+    Intake();
+    double * CalculateNextOutput();
+
 
 };
 

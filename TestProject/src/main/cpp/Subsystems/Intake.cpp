@@ -1,35 +1,40 @@
-#include "../include/Subsystems/Intake.h"
-
-#include "RobotMap.h"
-#include <cmath>
-#include <WPILib.h>
+#include "../../include/Subsystems/Intake.h"
 
 
-Intake::Intake() : Subsystem("Intake") {
+Intake::Intake() : Subsystem("Intake") {}
 
-    _intakeA = new Spark(INTAKE_CUBE_MOTOR_A);
-    _intakeB = new Spark(INTAKE_CUBE_MOTOR_B);
-    _angle = new Talon(INTAKE_ANGLE_MOTOR);
-    _clamp = new Solenoid(CLAMPER);
+double *Intake::CalculateNextOutput(double leftTrig, double rightTrig, bool bumper, double rightStick) {
+    if(!InDeadBand(leftTrig, rightTrig)) {
+        if(leftTrig > .05) {
+            output[0] = -leftTrig;
+        } else {
+            output[0] = rightTrig;
+        }
+    } else {
+        output[0] = 0;
+    }
+
+    output[1] = bumper ? 1 : 0;
+    output[2] = !InDeadBand(rightStick) ? rightStick : 0;
+
+    return output;
+
 }
 
-void Intake::Clamp(bool isClamped) {
-    _clamp->Set(!isClamped); // left_bumper
+bool InDeadBand(double rightStick) {
+    return rightStick < .05;
 }
 
-void Intake::SetIntakeSpeedIn(double power) {
-    _intakeA->Set(power);
-    _intakeB->Set(power); // right_trigger
-}
+bool InDeadBand(double leftVal, double rightVal) {
+    if(leftVal > .05 && rightVal > .05) {
+        return true;
+    }
 
-void Intake::SetIntakeSpeedOut(double power) {
-    SetIntakeSpeedIn(-power); // left_trigger
-}
+    if(leftVal < .05 && rightVal < .05) {
+        return true;
+    }
 
-void Intake::SetAngle(double power) {
-    _angle->Set(power); // right_stick y
-
-    // **LIFT IS LEFT STICK Y
+    return false;
 }
 
 
