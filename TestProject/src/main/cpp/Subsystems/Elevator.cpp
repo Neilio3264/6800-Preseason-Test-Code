@@ -1,4 +1,5 @@
 #include "../../include/Subsystems/Elevator.h"
+#include "Elevator.h"
 
 
 double ELEVATOR_IDLE_MOTOR_POWER = 0.08;
@@ -9,7 +10,8 @@ Elevator::Elevator() : Subsystem("Elevator") {
     i_val = .2;
     d_val = .1;
     accuracy = .01;
-    elevatorPID = new PIDControl(p_val, i_val, d_val, 0, 0, 0);
+    *elevatorPID = new PIDControl(p_val, i_val, d_val, 0, 0, 0);
+    dt = 0.02;
 
 }
 
@@ -28,7 +30,7 @@ double Elevator::CalculateNextOutput(bool set1, bool set2, bool set3, double joy
             return ELEVATOR_IDLE_MOTOR_POWER; 
         }
 
-        CalculateNextAutoOutput(targetSetPoint, encoder);
+        CalculateNextAutoOutput(targetSetPoint, encoder, dt);
 
     }
 
@@ -45,7 +47,7 @@ void Elevator::UpdateTargetSetpoint(bool set1, bool set2, bool set3) {
 
 }
 
-double Elevator::CalculateNextAutoOutput(int targetSetPoint, double currEncoder) {
+double Elevator::CalculateNextAutoOutput(int targetSetPoint, double currEncoder, double dt) {
     
     double targetEncoder;
 
@@ -62,7 +64,7 @@ double Elevator::CalculateNextAutoOutput(int targetSetPoint, double currEncoder)
     }
     double output;
 
-    output = elevatorPID.PID_Loop(targetEncoder, p_val, i_val, d_val, currEncoder, accuracy);
+    output = elevatorPID.PID_Loop(targetEncoder, p_val, i_val, d_val, currEncoder, accuracy, dt);
 
     if(output == -100) {
         return ELEVATOR_IDLE_MOTOR_POWER;

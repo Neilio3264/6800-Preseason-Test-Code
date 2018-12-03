@@ -1,40 +1,54 @@
+#include "Drivetrain.h"
 #include "../../include/Subsystems/Drivetrain.h"
-#include "../../include/Commands/DriveWithJoystick.h"
-
-#include "RobotMap.h"
 #include <cmath>
-#include <WPILib.h>
 
 
+Drivetrain::Drivetrain() : Subsystem("Drivetrain"){
+    p_val_straight = .5;
+	i_val_straight = .2;
+	d_val_straight = .1;
 
-Drivetrain::Drivetrain() : Subsystem("Drivetrain") {
 
-    _leftDrive = new VictorSP(DRIVE_LEFTMOTOR);
-    _rightDrive = new VictorSP(DRIVE_RIGHTMOTOR);
+    drivetrainPID_forward = new PIDControl(); // TODO: get real values for these PID constants
+	drivetrainPID_turn = new PIDControl();
+	drivetrainPID_straight = new PIDControl();
+    dt = 0.02;
 
-	_encoder = new Encoder(ENCODER_DRIVE_A, ENCODER_DRIVE_B);
-
-	_shifter = new Solenoid(SHIFTER);
-
-	//PDP
-	m_pdp = new PowerDistributionPanel();
 }
 
-void Drivetrain::InitDefaultCommand() {
-	SetDefaultCommand(new DriveWithJoystick());
+double *Drivetrain::CalculateNextOutputTele(double leftJoyVal, double rightJoyVal, bool shift) {
+	
+	
+	teleOutput[0] = leftJoyVal > .05 ? leftJoyVal : 0;
+	teleOutput[1] = rightJoyVal > .05 ? rightJoyVal : 0;
+	teleOutput[2] = shift ? 1 : 0;
+
+	return teleOutput;
+	
 }
 
-void Drivetrain::SetLeft(float val) {
-	_leftDrive->Set(val);
-	frc::SmartDashboard::PutNumber("SetLeft", val);
+
+double *Drivetrain::CalculateNextOutputAuto(double targetEncoder, double targetGyro, double currEncoder, double currGyro, bool turn, double dt, double p, double i, double d, double accuracy) {
+	if(turn) {
+		autoOutput[0] = drivetrainPID_turn.PID_Loop(targetGyro, p, i, d, currGyro, accuracy, dt);
+		autoOutput[1] = -autoOutput[0];
+	} else {
+		autoOutput[0] = drivetrainPID_forward.PID_Loop(targetEncoder, p, i, d, currEncoder, accuracy, dt) + drivetrainPID_turn.PID_Loop(targetGyro, p_val_straight, i_val_straight, d_val_straight, currGyro, accuracy, dt);
+		autoOutput[1] = autoOutput[0];
+	}
+
+	// TODO: this may have some problems with the above adding... find a workaroun
+	if(abs(autoOutput[0]) > 50) {
+		autoOutput[0] = 0;
+		autoOutput[1] = 0;
+		drivetrainPID_forward.reset();
+		drivetrainPID_straight.reset();
+		drivetrainPID_turn.reset();
+	}
+
+	return autoOutput;
+
 }
 
-void Drivetrain::SetRight(float val) {
-	_rightDrive->Set(val);
-	frc::SmartDashboard::PutNumber("SetRight", val);
-}
 
-void Drivetrain::SetGear(bool low) {
-	_shifter->Set(low);
-}
 

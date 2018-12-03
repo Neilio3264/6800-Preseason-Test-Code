@@ -3,9 +3,7 @@
 
 #include <Commands/Subsystem.h>
 #include "../Utilities/PIDControl.h"
-#include "RobotMap.h"
 #include <cmath>
-#include <WPILib.h>
 
 class Elevator : public Subsystem {
 private:
@@ -14,12 +12,13 @@ private:
     double i_val;
     double d_val;
     double accuracy;
+    double dt;
     int targetSetPoint;
     PIDControl elevatorPID;
 
     bool InDeadBand(double joyVal);
     void UpdateTargetSetpoint(bool set1, bool set2, bool set3);
-    double CalculateNextAutoOutput(int targetSetPoint, double currEncoder);
+    double CalculateNextAutoOutput(int targetSetPoint, double currEncoder, double dt);
 
 public:
 	Elevator();

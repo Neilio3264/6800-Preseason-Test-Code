@@ -4,6 +4,10 @@
 
 
 
+PIDControl::PIDControl() {
+    PIDControl(0, 0, 0, 0, 0, 0);
+}
+
 PIDControl::PIDControl(double p, double i, double d, double setpoint, double startValue, double acc) {
     _kp = p;
     _ki = i;
@@ -15,10 +19,13 @@ PIDControl::PIDControl(double p, double i, double d, double setpoint, double sta
     _prevError = 0;
     _integral = 0;
     
-    _timer.Reset();
-    _timer.Start();
-    _lastTime = _timer.Get();
+    _time = 0;
     
+}
+
+void PIDControl::reset() {
+    _time = 0;
+    _integral = 0;
 }
 
 void PIDControl::setSetpoint(double setpoint) {
@@ -54,44 +61,37 @@ double PIDControl::getkD() {
 }
 
 
-double PIDControl::PID_Loop(double setpoint, double p, double i, double d, double measuredValue, double acc) {
+double PIDControl::PID_Loop(double setpoint, double p, double i, double d, double measuredValue, double acc, double dt) {
 
     if(abs(setpoint - measuredValue) < acc) {
         return -100;
     }
 
-    double _timeDiff = _timer.Get() - _lastTime;
     double totalError = setpoint - _startValue;
     _prevError = _currError;
     _currError = setpoint - measuredValue;
-    _integral += _timeDiff * _currError;
+    _integral += dt * _currError;
 
-    double output = _currError * setpoint * p + (_integral) * i + (_currError - _prevError) / (_timeDiff) * d;
-
-    _lastTime = _timer.Get(); // TODO: Find a way to change timer to system time
+    double output = _currError * setpoint * p + (_integral) * i + (_currError - _prevError) / dt * d;
 
     return output;
 
 }
 
-double PIDControl::P_Loop(double setpoint, double p, double measuredValue) {
+double PIDControl::P_Loop(double setpoint, double p, double measuredValue, double acc, double dt) {
 
-    return PID_Loop(setpoint, p, 0, 0, measuredValue);
-
-}
-
-double PIDControl::PI_Loop(double setpoint, double p, double i, double measuredValue) {
-
-    return PID_Loop(setpoint, p, i, 0, measuredValue);
+    return PID_Loop(setpoint, p, 0, 0, measuredValue, acc, dt);
 
 }
 
-double PIDControl::PD_Loop(double setpoint, double p, double d, double measuredValue) {
+double PIDControl::PI_Loop(double setpoint, double p, double i, double measuredValue, double acc, double dt) {
 
-    return PID_Loop(setpoint, p, 0, d, measuredValue);
+    return PID_Loop(setpoint, p, i, 0, measuredValue, acc, dt);
 
 }
 
+double PIDControl::PD_Loop(double setpoint, double p, double d, double measuredValue, double acc, double dt) {
 
+    return PID_Loop(setpoint, p, 0, d, measuredValue, acc, dt);
 
-
+}

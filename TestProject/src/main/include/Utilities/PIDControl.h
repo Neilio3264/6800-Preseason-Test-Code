@@ -16,12 +16,12 @@ private:
     double _prevError;
     double _integral;
 
-    Timer _timer;
-    double _lastTime;
+    double _time;
 
 
 public:
 
+    PIDControl();
     PIDControl(double p, double i, double d, double setpoint, double startValue, double acc);
 
     void setkP(double kp);
@@ -32,11 +32,12 @@ public:
     double getkD();
     void setSetpoint(double setpoint);
     void setStartValue(double startValue);
+    void reset();
 
-    double P_Loop(double error, double p, double measuredValue, double acc);
-    double PI_Loop(double error, double p, double i, double measuredValue, double acc);
-    double PD_Loop(double error, double p, double d, double measuredValue, double acc);
-    double PID_Loop(double setpoint, double p, double i, double d, double measuredValue, double acc);     
+    double P_Loop(double error, double p, double measuredValue, double acc, double dt);
+    double PI_Loop(double error, double p, double i, double measuredValue, double acc, double dt);
+    double PD_Loop(double error, double p, double d, double measuredValue, double acc, double dt);
+    double PID_Loop(double setpoint, double p, double i, double d, double measuredValue, double acc, double dt);     
 };
 
 #endif
