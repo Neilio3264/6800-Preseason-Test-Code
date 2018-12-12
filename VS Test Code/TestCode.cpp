@@ -22,7 +22,7 @@ int main ()
     clock_t t;
     int f;
     t = clock();
-    cout << "Calculating..." << "\n";
+    cout << "Calculating..." << "\n"; akdshfjl
     f = frequency_of_primes (99999);
     cout << "The number of primes lower than 100,000 is: " << f << "\n";
     t = clock() - t;
