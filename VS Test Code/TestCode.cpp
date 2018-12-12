@@ -19,6 +19,7 @@ int frequency_of_primes (int n) {
 int main ()
 {
         /*
+        Testing Drivetrain merge
     clock_t t;
     int f;
     t = clock();
