@@ -20,7 +20,7 @@ double *Intake::CalculateNextOutput(double leftTrig, double rightTrig, bool bump
     if (!InDeadBand(rightStick)) {
         output[2] = rightStick;
     } else {
-        UpdateAngleSetpoint(set1, set2)
+        UpdateAngleSetpoint(set1, set2);
         switch (angleSetpoint) {
             case MANUAL_MODE:
                 output[2] = 0;
