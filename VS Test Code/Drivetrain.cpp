@@ -1,6 +1,8 @@
 #include "Drivetrain.h"
 
-Drivetrain::Drivetrain() {}
+Drivetrain::Drivetrain() {
+
+}
 
 double* Drivetrain::CalculateNextOutput(double joyValL, double joyValR, bool shifter) {
     if (InDeadBand(joyValL, joyValR)) {

@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include <Commands/Subsystem.h>
+#include "Subsystem.h"
 
 class ExampleSubsystem : public frc::Subsystem {
  public:
