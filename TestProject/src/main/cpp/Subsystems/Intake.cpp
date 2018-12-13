@@ -3,20 +3,31 @@
 
 Intake::Intake() : Subsystem("Intake") {
     angleSetpoint = MANUAL_MODE;
+    intakeState = MANUAL_MODE;
+    clampState = MANUAL_MODE;
 }
 
-double *Intake::CalculateNextOutput(double leftTrig, double rightTrig, bool bumper, double rightStick, bool set1, bool set2) {
+double *Intake::CalculateNextOutput(double leftTrig, double rightTrig, bool bumper, double rightStick, bool set1, bool set2, double currEncoder) {
     if(!InDeadBand(leftTrig, rightTrig)) {
         if(leftTrig > .05) {
             output[0] = -leftTrig;
+            intakeState = EJECT;
         } else {
             output[0] = rightTrig;
+            intakeState = INTAKE;
         }
     } else {
         output[0] = 0;
     }
 
-    output[1] = bumper ? 1 : 0;
+    if (bumper) {
+        output[1] = 1;
+        clampState = CLAMP;
+    } else {
+        output[1] = 0;
+        clampState = UNCLAMP;
+    }
+
     if (!InDeadBand(rightStick)) {
         output[2] = rightStick;
     } else {
@@ -29,6 +40,8 @@ double *Intake::CalculateNextOutput(double leftTrig, double rightTrig, bool bump
                 output[2] = CalculateNextOutputAuto(currEncoder, angleSetpoint);
         }
     }
+
+    
 
     return output;
 }
@@ -51,8 +64,8 @@ double Intake::CalculateNextOutputAuto(double currEncoder, int angleSetpoint) {
 }
 
 void Intake::UpdateAngleSetpoint(bool set1, bool set2) {
-    if(set1) { angleSetpoint = UP; }
-    if(set2) { angleSetpoint = DOWN; }
+    if (set1) { angleSetpoint = UP; }
+    if (set2) { angleSetpoint = DOWN; }
 }
 
 bool InDeadBand(double rightStick) {
