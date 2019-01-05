@@ -1,6 +1,6 @@
-#include "Drivetrain.h"
+#include "Subsystems/Drivetrain.h"
 
-Drivetrain::Drivetrain() {}
+Drivetrain::Drivetrain() : frc::Subsystem("Drivetrain") {}
 
 double* Drivetrain::CalculateNextOutput(double joyValL, double joyValR, bool shifter) {
     if (InDeadBand(joyValL, joyValR)) {

@@ -14,5 +14,9 @@
   "wpilib.online": true,
   "C_Cpp.intelliSenseEngineFallback": "Disabled",
   "C_Cpp.errorSquiggles": "Enabled",
-  "wpilib.autoSaveOnDeploy": true
+  "wpilib.autoSaveOnDeploy": true,
+  "files.associations": {
+    "vector": "cpp",
+    "new": "cpp"
+  }
 }

@@ -1,13 +1,15 @@
-#include "../../include/Subsystems/Intake.h"
+#include "Subsystems/Intake.h"
 
-
-Intake::Intake() : Subsystem("Intake") {
+Intake::Intake() : frc::Subsystem("Intake") {
     angleSetpoint = MANUAL_MODE;
     intakeState = MANUAL_MODE;
     clampState = MANUAL_MODE;
+
+    double output[3] = {0.0, 0.0, 0.0};
 }
 
-double *Intake::CalculateNextOutput(double leftTrig, double rightTrig, bool bumper, double rightStick, bool set1, bool set2, double currEncoder) {
+double * Intake::CalculateNextOutput(double leftTrig, double rightTrig, bool bumper, double rightStick, bool set1, bool set2, double currEncoder) {
+
     if(!InDeadBand(leftTrig, rightTrig)) {
         if(leftTrig > .05) {
             output[0] = -leftTrig;
@@ -40,9 +42,6 @@ double *Intake::CalculateNextOutput(double leftTrig, double rightTrig, bool bump
                 output[2] = CalculateNextOutputAuto(currEncoder, angleSetpoint);
         }
     }
-
-    
-
     return output;
 }
 
@@ -68,11 +67,11 @@ void Intake::UpdateAngleSetpoint(bool set1, bool set2) {
     if (set2) { angleSetpoint = DOWN; }
 }
 
-bool InDeadBand(double rightStick) {
+bool Intake::InDeadBand(double rightStick) {
     return rightStick < .05;
 }
 
-bool InDeadBand(double leftVal, double rightVal) {
+bool Intake::InDeadBand(double leftVal, double rightVal) {
     if(leftVal > .05 && rightVal > .05) {
         return true;
     }

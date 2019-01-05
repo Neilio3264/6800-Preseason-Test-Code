@@ -1,9 +1,9 @@
-#ifndef Intake_H
-#define Intake_H
+#pragma once
 
+#include <cmath>
 #include <Commands/Subsystem.h>
 
-class Intake : public Subsystem {
+class Intake : public frc::Subsystem {
 private:
     static constexpr int MANUAL_MODE = 0;
     static constexpr int UP = 1;
@@ -19,7 +19,8 @@ private:
     int clampState;
     int intakeState;
 
-    static double output[3];
+    double output[3];
+
     // 0 - intake wheels
     // 1 - clamp
     // 2 - angle
@@ -34,5 +35,3 @@ public:
     double CalculateNextOutputAuto(double currEncoder, int angleSetpoint);
 
 };
-
-#endif

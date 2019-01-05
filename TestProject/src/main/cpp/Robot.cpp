@@ -9,7 +9,7 @@
 
 #include <Commands/Scheduler.h>
 
-#include <WPILib.h>
+#include "WPILib.h"
 
 #include <SmartDashboard/SmartDashboard.h>
 
@@ -17,6 +17,7 @@ Drivetrain *Robot::_drivetrain = 0;
 Elevator *Robot::_elevator = 0;
 OI *Robot::_oi = 0;
 Intake *Robot::_intake = 0;
+PowerDistributionPanel *Robot::_pdp = 0;
 
 void Robot::RobotInit() {
   
@@ -24,9 +25,10 @@ void Robot::RobotInit() {
   _elevator = new Elevator();
   _oi = new OI();
   _intake = new Intake();
+  _pdp = new PowerDistributionPanel();
 
-  m_chooser.AddDefault("Default Auto", &m_defaultAuto);
-  m_chooser.AddObject("My Auto", &m_myAuto);
+  // m_chooser.AddDefault("Default Auto", &m_defaultAuto);
+  // m_chooser.AddObject("My Auto", &m_myAuto);
   frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
 }
 

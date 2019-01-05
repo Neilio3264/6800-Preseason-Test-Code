@@ -7,12 +7,12 @@
 
 #pragma once
 
+#include "WPILib.h"
+
 #include <Commands/Command.h>
 #include <SmartDashboard/SendableChooser.h>
 #include <TimedRobot.h>
 
-#include "Commands/ExampleCommand.h"
-#include "Commands/MyAutoCommand.h"
 #include "OI.h"
 #include "Subsystems/Drivetrain.h"
 #include "Subsystems/Elevator.h"
@@ -24,7 +24,7 @@ class Robot : public frc::TimedRobot {
   static Elevator* _elevator;
   static OI* _oi;
   static Intake* _intake;
-  
+  static PowerDistributionPanel* _pdp;
 
   void RobotInit() override;
   void RobotPeriodic() override;
@@ -40,7 +40,7 @@ class Robot : public frc::TimedRobot {
   // Have it null by default so that if testing teleop it
   // doesn't have undefined behavior and potentially crash.
   frc::Command* m_autonomousCommand = nullptr;
-  ExampleCommand m_defaultAuto;
-  MyAutoCommand m_myAuto;
+  // ExampleCommand m_defaultAuto;
+  // MyAutoCommand m_myAuto;
   frc::SendableChooser<frc::Command*> m_chooser;
 };

@@ -1,19 +1,15 @@
-#include <cmath>
 #include "../../include/Utilities/PIDControl.h"
-#include <Timer.h>
-
-
+#include <iostream>
 
 PIDControl::PIDControl() {
-    PIDControl(0, 0, 0, 0, 0, 0);
+    PIDControl(0, 0, 0, 0, 0);
 }
 
-PIDControl::PIDControl(double p, double i, double d, double setpoint, double startValue, double acc) {
+PIDControl::PIDControl(double p, double i, double d, double setpoint, double acc) {
     _kp = p;
     _ki = i;
     _kd = d;
     _setpoint = setpoint;
-    _startValue = startValue;
 
     _currError = 0;
     _prevError = 0;
@@ -30,10 +26,6 @@ void PIDControl::reset() {
 
 void PIDControl::setSetpoint(double setpoint) {
     _setpoint = setpoint;
-}
-
-void PIDControl::setStartValue(double startValue) {
-    _startValue = startValue;
 }
 
 void PIDControl::setkP(double p) {
@@ -63,18 +55,19 @@ double PIDControl::getkD() {
 
 double PIDControl::PID_Loop(double setpoint, double p, double i, double d, double measuredValue, double acc, double dt) {
 
-    if(abs(setpoint - measuredValue) < acc) {
+    if(abs(setpoint - measuredValue) <= acc) {
         return -100;
     }
 
-    double totalError = setpoint - _startValue;
     _prevError = _currError;
+
     _currError = setpoint - measuredValue;
+
     _integral += dt * _currError;
 
-    double output = _currError * setpoint * p + (_integral) * i + (_currError - _prevError) / dt * d;
+    double output = (_currError * (1/setpoint) * p) + (_integral * i) + (((_currError - _prevError) / dt) * d);
 
-    return output;
+    return output + .08;
 
 }
 

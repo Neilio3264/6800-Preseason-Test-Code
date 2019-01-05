@@ -34,8 +34,8 @@ int main ()
         */
 
     bool set1 = false;
-    bool set2 = true;
-    bool set3 = true;
+    bool set2 = false;
+    bool set3 = false;
     double joyVal = 1;
     double encoder = 0;
 

@@ -15,8 +15,6 @@ Elevator::Elevator() {
 
 double Elevator::CalculateNextOutput(bool set1, bool set2, bool set3, double joyVal, double encoder) {
 
-    std::cout << targetSetPoint << '\n';
-
     if(targetSetPoint == 1 && abs(encoder - .15) <= .01) { targetSetPoint = 0; }
     if(targetSetPoint == 2 && abs(encoder - .4) <= .01) { targetSetPoint = 0; }
     if(targetSetPoint == 3 && abs(encoder - .6) <= .01) { targetSetPoint = 0; }

@@ -1,18 +1,16 @@
-#ifndef Drivetrain_H
-#define Drivetrain_H
+#pragma once
 
-#include "PIDControl.h"
+#include "../Utilities/PIDControl.h"
 #include <cmath>
+#include <Commands/Subsystem.h>
 
-class Drivetrain {
+class Drivetrain : public frc::Subsystem { 
 public:
 
     bool InDeadBand(double joyValL, double joyValR);
     double* CalculateNextOutput(double joyValL, double joyValR, bool shifter);
-    static double outputs[3];
+    double outputs[3];
 	Drivetrain();
     
     
 };
-
-#endif  
