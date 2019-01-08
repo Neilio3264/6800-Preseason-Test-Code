@@ -17,6 +17,7 @@
   "wpilib.autoSaveOnDeploy": true,
   "files.associations": {
     "vector": "cpp",
-    "new": "cpp"
+    "new": "cpp",
+    "cmath": "cpp"
   }
 }
