@@ -10,16 +10,24 @@
 #include <frc/commands/Subsystem.h>
 #include "../utilities/PIDControl.h"
 #include <cmath>
+#include "RobotMap.h"
+#include "frc/WPILib.h"
+#include "OI.h"
+#include <frc/commands/Command.h>
+#include "../commands/DrivetrainCommandTele.h"
 
 class Drivetrain : public frc::Subsystem {
  public:
-    Drivetrain();
-    void InitDefaultCommand() override;
+   Drivetrain();
+   
+   void InitDefaultCommand() override;
+   
+   void setMotorLeft(double power);
+   void setMotorRight(double power);
+   
+   frc::VictorSP* motorLeft;
+   frc::VictorSP* motorRight;
 
-    bool InDeadBand(double joyValL, double joyValR);
-    double* CalculateNextOutput(double joyValL, double joyValR, bool shifter);
-    double outputs[3];
  private:
-  // It's desirable that everything possible under private except
-  // for methods that implement subsystem capabilities
+   
 };

@@ -8,20 +8,27 @@
 #pragma once
 
 #include <frc/commands/Subsystem.h>
-#include "OI.h"
-#include "frc/WPILib.h"
-#include "RobotMap.h"
-#include "commands/ElevatorCommandTele.h"
+#include "../utilities/PIDControl.h"
+#include "../utilities/Constants.h"
+#include <cmath>
 
-class Elevator : public frc::Subsystem {
+class ElevatorCalculations {
  public:
-    
-    frc::VictorSP* liftA;
-    frc::VictorSP* liftB;
+    ElevatorCalculations();
 
-    frc::Encoder *encoderElevator;
-    Elevator();
-    void InitDefaultCommand() override;
+    double p_val;
+    double i_val;
+    double d_val;
+    double accuracy;
+    double dt;
+    int targetSetPoint;
+    PIDControl *elevatorPID;
+
+    bool InDeadBand(double joyVal);
+    void UpdateTargetSetpoint(bool set1, bool set2, bool set3);
+    double CalculateNextAutoOutput(int targetSetPoint, double currEncoder, double dt);
+    
+    double CalculateNextOutput(bool set1, bool set2, bool set3, double joyVal, double encoder); // TODO: Research what encoder returns
  private:
   // It's desirable that everything possible under private except
   // for methods that implement subsystem capabilities

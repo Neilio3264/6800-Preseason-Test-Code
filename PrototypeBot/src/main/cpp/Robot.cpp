@@ -13,20 +13,15 @@
 
 #include <frc/smartDashboard/SmartDashboard.h>
 
-Drivetrain *Robot::_drivetrain = 0;
-Elevator *Robot::_elevator = 0;
-OI *Robot::_oi = 0;
-Intake *Robot::_intake = 0;
+Drivetrain* Robot::_drivetrain;
+Elevator *Robot::_elevator;
+OI * Robot::_oi;
+Intake *Robot::_intake;
 
 void Robot::RobotInit() {
-  
-  _drivetrain = new Drivetrain();
-  _elevator = new Elevator();
-  _oi = new OI();
-  _intake = new Intake();
 
-  m_chooser.AddDefault("Default Auto", &m_defaultAuto);
-  m_chooser.AddObject("My Auto", &m_myAuto);
+  m_chooser.SetDefaultOption("Default Auto", &m_defaultAuto);
+  m_chooser.AddOption("My Auto", &m_myAuto);
   frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
 }
 
@@ -94,5 +89,5 @@ void Robot::TeleopPeriodic() { frc::Scheduler::GetInstance()->Run(); }
 void Robot::TestPeriodic() {}
 
 #ifndef RUNNING_FRC_TESTS
-START_ROBOT_CLASS(Robot)
+int main() { return frc::StartRobot<Robot>(); }
 #endif

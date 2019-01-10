@@ -1,10 +1,7 @@
 #pragma once
 
 #include "subsystems/Elevator.h"
-#include "../Robot.h"
-#include "OI.h"
-#include "frc/WPILib.h"
-#include "RobotMap.h"
+#include "Calculations/ElevatorCalculations.h"
 #include <frc/commands/Command.h>
 
 class ElevatorCommandTele : public frc::Command {
@@ -17,10 +14,6 @@ public:
     void End();
     void Interrupted();
 
-    frc::VictorSP* liftA;
-    frc::VictorSP* liftB;
-
-    frc::Encoder *encoderElevator;
-    
-    double output;
+private:
+    ElevatorCalculations* calculations;
 };

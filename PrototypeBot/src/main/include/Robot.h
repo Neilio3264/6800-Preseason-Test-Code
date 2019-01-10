@@ -22,10 +22,9 @@ class Robot : public frc::TimedRobot {
  public:
   static Drivetrain* _drivetrain;
   static Elevator* _elevator;
-  static OI* _oi;
   static Intake* _intake;
+  static OI* _oi;
   
-
   void RobotInit() override;
   void RobotPeriodic() override;
   void DisabledInit() override;
