@@ -9,20 +9,22 @@
 
 #include <frc/commands/Subsystem.h>
 #include "OI.h"
-#include "frc/WPILib.h"
+#include <frc/WPILib.h>
 #include "RobotMap.h"
 #include "commands/ElevatorCommandTele.h"
+#include <frc/VictorSP.h>
+#include <frc/Encoder.h>
 
 class Elevator : public frc::Subsystem {
  public:
-    
-    frc::VictorSP* liftA;
-    frc::VictorSP* liftB;
-
-    frc::Encoder *encoderElevator;
     Elevator();
     void InitDefaultCommand() override;
+    void setLiftMotors(double power);
+    double getEncoder();
  private:
   // It's desirable that everything possible under private except
   // for methods that implement subsystem capabilities
+   frc::VictorSP liftA{LIFT_MOTOR_A};
+   frc::VictorSP liftB{LIFT_MOTOR_B};
+   frc::Encoder* encoderElevator;
 };

@@ -11,23 +11,22 @@
 #include "../utilities/PIDControl.h"
 #include <cmath>
 #include "RobotMap.h"
-#include "frc/WPILib.h"
+#include <frc/WPILib.h>
 #include "OI.h"
-#include <frc/commands/Command.h>
 #include "../commands/DrivetrainCommandTele.h"
+#include <frc/VictorSP.h>
+#include <frc/drive/DifferentialDrive.h>
 
 class Drivetrain : public frc::Subsystem {
  public:
    Drivetrain();
    
    void InitDefaultCommand() override;
-   
-   void setMotorLeft(double power);
-   void setMotorRight(double power);
-   
-   frc::VictorSP* motorLeft;
-   frc::VictorSP* motorRight;
 
+   void TankDrive(double leftPower, double rightPower);
  private:
-   
+   frc::VictorSP motorLeft{DRIVE_LEFTMOTOR};
+   frc::VictorSP motorRight{DRIVE_RIGHTMOTOR};
+
+   frc::DifferentialDrive _robotDrive{motorLeft, motorRight};
 };

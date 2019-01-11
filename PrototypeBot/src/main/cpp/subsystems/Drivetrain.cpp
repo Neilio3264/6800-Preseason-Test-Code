@@ -10,13 +10,19 @@ void Drivetrain::InitDefaultCommand() {
   SetDefaultCommand(new DrivetrainCommandTele());
 }
 
+void Drivetrain::TankDrive(double left, double right) {
+    _robotDrive.TankDrive(left, right, false);
+}
+
+/*
 void Drivetrain::setMotorLeft(double power) {
-    motorLeft->Set(power);
+    motorLeft.Set(power);
 }
 
 void Drivetrain::setMotorRight(double power) {
-    motorRight->Set(power);
+    motorRight.Set(power);
 }
+*/
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

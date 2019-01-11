@@ -22,6 +22,8 @@ public:
     void End();
     void Interrupted();
 
-    double output[3];
+    // double output[3];
+
+private:
     IntakeCalculations* calculations;
 };

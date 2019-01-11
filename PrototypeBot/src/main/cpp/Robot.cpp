@@ -9,14 +9,14 @@
 
 #include <frc/commands/Scheduler.h>
 
-#include "frc/WPILib.h"
+#include <frc/WPILib.h>
 
-#include <frc/smartDashboard/SmartDashboard.h>
+#include <frc/smartdashboard/SmartDashboard.h>
 
 Drivetrain* Robot::_drivetrain;
-Elevator *Robot::_elevator;
-OI * Robot::_oi;
-Intake *Robot::_intake;
+Elevator* Robot::_elevator;
+OI* Robot::_oi;
+Intake* Robot::_intake;
 
 void Robot::RobotInit() {
 

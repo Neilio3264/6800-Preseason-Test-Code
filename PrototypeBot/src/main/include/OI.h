@@ -5,12 +5,12 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#ifndef OI_H
-#define OI_H
-#include "frc/WPILib.h"
-#include "frc/XboxController.h"
-#include "frc/Joystick.h"
-#include "frc/buttons/Button.h"
+#pragma once
+
+#include <frc/WPILib.h>
+#include <frc/XboxController.h>
+#include <frc/Joystick.h>
+#include <frc/buttons/Button.h>
 
 class OI {
  private:
@@ -26,4 +26,3 @@ class OI {
   //Button *pedal;
   OI();
 };
-#endif

@@ -24,7 +24,9 @@ class Robot : public frc::TimedRobot {
   static Elevator* _elevator;
   static Intake* _intake;
   static OI* _oi;
-  
+
+ private:
+ 
   void RobotInit() override;
   void RobotPeriodic() override;
   void DisabledInit() override;
@@ -34,8 +36,6 @@ class Robot : public frc::TimedRobot {
   void TeleopInit() override;
   void TeleopPeriodic() override;
   void TestPeriodic() override;
-
- private:
   // Have it null by default so that if testing teleop it
   // doesn't have undefined behavior and potentially crash.
   frc::Command* m_autonomousCommand = nullptr;
