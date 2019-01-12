@@ -1,7 +1,5 @@
 #include "Calculations/ElevatorCalculations.h"
 
-#include "RobotMap.h"
-
 ElevatorCalculations::ElevatorCalculations() {
     targetSetPoint = 0;
     p_val = .5;

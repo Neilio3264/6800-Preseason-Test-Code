@@ -11,25 +11,27 @@
 #include "../utilities/PIDControl.h"
 #include <cmath>
 #include "RobotMap.h"
-#include <frc/WPILib.h>
-#include "OI.h"
 #include "../commands/IntakeCommandTele.h"
-#include <ctre/Phoenix.h>
-#include <ctre/phoenix/motorcontrol/can/WPI_TalonSRX.h>
+// #include <ctre/phoenix/motorcontrol/can/WPI_TalonSRX.h>
 #include <frc/Spark.h>
+#include <frc/Encoder.h>
+#include <frc/Solenoid.h>
+#include <ctre/phoenix/motorcontrol/ControlMode.h>
 
-class Intake : public frc::Subsystem {
+using namespace frc;
+
+class Intake : public Subsystem {
 public:
    Intake();
-   void InitDefaultCommand() override;
+   void InitDefaultCommand();
 
    void setIntakeSpeed (double power);
-   void setAngleSpeed(double power);
+   // void setAngleSpeed(double power);
    void setSolenoid(double output);
 private:
-   frc::Spark intakeA{INTAKE_CUBE_MOTOR_A};
-   frc::Spark intakeB{INTAKE_CUBE_MOTOR_B};
-   ctre::phoenix::motorcontrol::can::WPI_TalonSRX* angle{0};
-   frc::Solenoid* solenoid; // TODO: Put in correct port
-   frc::Encoder* encoderIntake;
+   Spark intakeA{0};
+   Spark intakeB{1};
+   // ctre::phoenix::motorcontrol::can::WPI_TalonSRX angle{0};
+   Solenoid solenoid{2}; // TODO: Put in correct port
+   Encoder encoderIntake{1, 2, false, Encoder::k1X};
 };

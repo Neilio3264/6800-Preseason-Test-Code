@@ -9,20 +9,17 @@
 
 OI::OI() {
   // Process operator interface input here.
-  leftJoyDrive = new frc::Joystick(1);
-  rightJoyDrive = new frc::Joystick(2);
 
   gamepad = new frc::XboxController(0);
 
   //pedal = new Button(3);
-
 }
 
-frc::Joystick* OI::getLeftJoyDrive() {
+frc::Joystick& OI::getLeftJoyDrive() {
   return leftJoyDrive;
 }
 
-frc::Joystick* OI::getRightJoyDrive() {
+frc::Joystick& OI::getRightJoyDrive() {
   return rightJoyDrive;
 }
 

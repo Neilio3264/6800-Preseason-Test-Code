@@ -9,7 +9,6 @@
 
 #include <frc/commands/Subsystem.h>
 #include "OI.h"
-#include <frc/WPILib.h>
 #include "RobotMap.h"
 #include "commands/ElevatorCommandTele.h"
 #include <frc/VictorSP.h>
@@ -18,13 +17,13 @@
 class Elevator : public frc::Subsystem {
  public:
     Elevator();
-    void InitDefaultCommand() override;
+    void InitDefaultCommand();
     void setLiftMotors(double power);
     double getEncoder();
  private:
   // It's desirable that everything possible under private except
   // for methods that implement subsystem capabilities
-   frc::VictorSP liftA{LIFT_MOTOR_A};
-   frc::VictorSP liftB{LIFT_MOTOR_B};
-   frc::Encoder* encoderElevator;
+   frc::VictorSP liftA{8};
+   frc::VictorSP liftB{9};
+   frc::Encoder encoderElevator{5, 6, false, frc::Encoder::k1X};
 };

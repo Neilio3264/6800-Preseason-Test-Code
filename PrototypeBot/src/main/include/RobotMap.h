@@ -27,21 +27,21 @@
 
 //Motor Controller IDs
 constexpr int DRIVE_LEFTMOTOR   	= 3;
-constexpr int DRIVE_RIGHTMOTOR	    = 4;
+constexpr int DRIVE_RIGHTMOTOR	= 4;
 
-constexpr int LIFT_MOTOR_A 	    	= 8;
+constexpr int LIFT_MOTOR_A 	    = 8;
 constexpr int LIFT_MOTOR_B   		= 9;
 
-constexpr int SHIFTER               = 6;  
+constexpr int SHIFTER             = 6;  
 
-constexpr int CLAMPER               = 3;  
+constexpr int CLAMPER             = 3;  
 
-constexpr int INTAKE_CUBE_MOTOR_A 	= 0;
-constexpr int INTAKE_CUBE_MOTOR_B   = 1; 
+constexpr int INTAKE_CUBE_MOTOR_A = 0;
+constexpr int INTAKE_CUBE_MOTOR_B = 1; 
 constexpr int INTAKE_ANGLE_MOTOR	= 0; // NOTE: WRONG PORT (PROBABLY)
 
-constexpr int ENCODER_DRIVE_A    = 0; 
-constexpr int ENCODER_DRIVE_B   = 1;  
+// int ENCODER_DRIVE_A     = 0; 
+// int ENCODER_DRIVE_B     = 1;  
 
 constexpr int ENCODER_LIFT_A = 5;
 constexpr int ENCODER_LIFT_B = 6;

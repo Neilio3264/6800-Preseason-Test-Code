@@ -8,21 +8,23 @@
 #include "Robot.h"
 
 #include <frc/commands/Scheduler.h>
+#include <frc/smartdashboard/SmartDashboard.h>
 
 #include <frc/WPILib.h>
 
-#include <frc/smartdashboard/SmartDashboard.h>
-
-Drivetrain* Robot::_drivetrain;
-Elevator* Robot::_elevator;
-OI* Robot::_oi;
-Intake* Robot::_intake;
+Drivetrain Robot::_drivetrain;
+Elevator Robot::_elevator;
+Intake Robot::_intake;
+OI Robot::_oi;
 
 void Robot::RobotInit() {
+  frc::SmartDashboard::PutData(&_drivetrain);
+  frc::SmartDashboard::PutData(&_elevator);
+  frc::SmartDashboard::PutData(&_intake);
 
   m_chooser.SetDefaultOption("Default Auto", &m_defaultAuto);
   m_chooser.AddOption("My Auto", &m_myAuto);
-  frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
+  frc::SmartDashboard::PutData("Auto Modes", &m_chooser); 
 }
 
 /**
@@ -33,16 +35,14 @@ void Robot::RobotInit() {
  * <p> This runs after the mode specific periodic functions, but before
  * LiveWindow and SmartDashboard integrated updating.
  */
-void Robot::RobotPeriodic() {}
+// void Robot::RobotPeriodic() {}
 
 /**
  * This function is called once each time the robot enters Disabled mode. You
  * can use it to reset any subsystem information you want to clear when the
  * robot is disabled.
  */
-void Robot::DisabledInit() {}
 
-void Robot::DisabledPeriodic() { frc::Scheduler::GetInstance()->Run(); }
 
 /**
  * This autonomous (along with the chooser code above) shows how to select
@@ -65,13 +65,12 @@ void Robot::AutonomousInit() {
   // }
 
   m_autonomousCommand = m_chooser.GetSelected();
-
-  if (m_autonomousCommand != nullptr) {
-    m_autonomousCommand->Start();
-  }
+  m_autonomousCommand->Start();
 }
 
-void Robot::AutonomousPeriodic() { frc::Scheduler::GetInstance()->Run(); }
+void Robot::AutonomousPeriodic() { 
+  frc::Scheduler::GetInstance()->Run();
+}
 
 void Robot::TeleopInit() {
   // This makes sure that the autonomous stops running when
@@ -84,9 +83,15 @@ void Robot::TeleopInit() {
   }
 }
 
-void Robot::TeleopPeriodic() { frc::Scheduler::GetInstance()->Run(); }
+void Robot::TeleopPeriodic() {
+  frc::Scheduler::GetInstance()->Run();
+}
 
 void Robot::TestPeriodic() {}
+
+void Robot::DisabledInit() {}
+
+void Robot::DisabledPeriodic() {}
 
 #ifndef RUNNING_FRC_TESTS
 int main() { return frc::StartRobot<Robot>(); }

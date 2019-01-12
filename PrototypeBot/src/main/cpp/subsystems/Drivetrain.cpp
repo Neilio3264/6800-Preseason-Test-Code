@@ -1,7 +1,9 @@
 #include "subsystems/Drivetrain.h"
 
 
-Drivetrain::Drivetrain() : frc::Subsystem("Drivetrain") {}
+Drivetrain::Drivetrain() : frc::Subsystem("Drivetrain") {
+    _robotDrive.SetSafetyEnabled(false);
+}
 
 void Drivetrain::InitDefaultCommand() {
   // Set the default command for a subsystem here.

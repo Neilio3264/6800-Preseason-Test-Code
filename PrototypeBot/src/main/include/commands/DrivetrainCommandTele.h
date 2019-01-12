@@ -1,8 +1,5 @@
 #pragma once
 
-#include "subsystems/Drivetrain.h"
-#include "OI.h"
-#include "RobotMap.h"
 // #include <frc/WPILib.h>
 #include <frc/commands/Command.h>
 #include "../Calculations/DrivetrainCalculations.h"
@@ -20,7 +17,7 @@ public:
     // double output[3];
 
 private:
-    DrivetrainCalculations* calculations;
+    DrivetrainCalculations* calculationsDrivetrain;
 
     double left, right;
 };

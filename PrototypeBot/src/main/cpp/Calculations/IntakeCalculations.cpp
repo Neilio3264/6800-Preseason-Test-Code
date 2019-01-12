@@ -1,7 +1,5 @@
 #include "Calculations/IntakeCalculations.h"
 
-#include "RobotMap.h"
-
 IntakeCalculations::IntakeCalculations() {
     angleSetpoint = MANUAL_MODE;
     intakeState = MANUAL_MODE;

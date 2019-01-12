@@ -15,5 +15,5 @@ public:
     void Interrupted();
 
 private:
-    ElevatorCalculations* calculations;
+    ElevatorCalculations* calculationsElevator;
 };

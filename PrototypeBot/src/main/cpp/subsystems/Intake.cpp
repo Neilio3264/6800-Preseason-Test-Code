@@ -5,8 +5,9 @@
 #include "Calculations/IntakeCalculations.h"
 
 Intake::Intake() : frc::Subsystem("Intake") {
-    solenoid = new frc::Solenoid(2);
-    encoderIntake = new frc::Encoder(1, 2, false, frc::Encoder::k1X);
+    intakeA.SetSafetyEnabled(false);
+    intakeB.SetSafetyEnabled(false);
+    // angle.SetSafetyEnabled(false);
 }
 
 void Intake::InitDefaultCommand() {
@@ -20,10 +21,12 @@ void Intake::setIntakeSpeed(double power) {
     intakeB.Set(power);                                
 }
 
+/*
 void Intake::setAngleSpeed(double power) {
-    angle->Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, power);
+    angle.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, power);
 }
+*/
 
 void Intake::setSolenoid(double output) {
-    output == 1 ? solenoid->Set(true) : solenoid->Set(false);
+    solenoid.Set(output == 1);
 }

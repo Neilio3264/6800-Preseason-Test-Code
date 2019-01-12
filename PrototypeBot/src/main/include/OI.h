@@ -14,13 +14,13 @@
 
 class OI {
  private:
-  frc::Joystick* leftJoyDrive;
-  frc::Joystick* rightJoyDrive;
+  frc::Joystick leftJoyDrive{1};
+  frc::Joystick rightJoyDrive{2};
 
   frc::XboxController* gamepad;
  public:
-  frc::Joystick* getLeftJoyDrive();
-  frc::Joystick* getRightJoyDrive();
+  frc::Joystick& getLeftJoyDrive();
+  frc::Joystick& getRightJoyDrive();
   frc::XboxController* getGamepad();
 
   //Button *pedal;
