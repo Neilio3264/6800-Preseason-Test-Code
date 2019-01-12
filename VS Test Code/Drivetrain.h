@@ -1,17 +1,17 @@
 #ifndef Drivetrain_H
 #define Drivetrain_H
 
+using namespace std;
+
 #include "PIDControl.h"
 #include <cmath>
-#include <array>
 
 class Drivetrain{
 public:
 
-	// Drivetrain();
-    bool InDeadBand(double joyValL, double joyValR);
-    double* CalculateNextOutput(double joyValL, double joyValR, bool shifter);
-    static double outputs[3];
+	Drivetrain();
+    bool InDeadBand(double, double);
+    void CalculateNextOutput(double*, unsigned int, double, double, bool);
     
 };
 

@@ -5,6 +5,7 @@
 #include "PIDControl.h"
 #include "Elevator.h"
 #include "Drivetrain.h"
+#include "Intake.h"
 
 using namespace std;
 
@@ -19,21 +20,12 @@ int frequency_of_primes (int n) {
 
 int main ()
 {
-        /*
-        Testing Drivetrain merge
-        Again aodsihf;adjkslfhasd;hflkasd
-    clock_t t;
-    int f;
-    t = clock();
-    cout << "Calculating..." << "\n"; akdshfjl
-    f = frequency_of_primes (99999);
-    cout << "The number of primes lower than 100,000 is: " << f << "\n";
-    t = clock() - t;
-    int click = round((float)t / 1000);
-    printf ("It took %d clicks to complete (%f millisenconds).\n", click, ((float)t/CLOCKS_PER_SEC)*1000);
-    return 0;
-        */
+    // ============ INTAKE TEST =========================
 
+    Intake intake;
+    
+
+    // ============ ELEVATOR TEST =======================
     // bool set1 = false;
     // bool set2 = false;
     // bool set3 = false;
@@ -42,11 +34,9 @@ int main ()
 
     // double output = 0;
 
-    // Elevator elevator = *new Elevator();
+    // Elevator elevator;
 
-    // // cout << elevator.CalculateNextOutput(set1, set2, set3, joyVal, encoder) << "\n"; 
-
-    // while (output != .08) {
+    // while(true) {
 
     //     output = elevator.CalculateNextOutput(set1, set2, set3, joyVal, encoder);
     //     cout << output << '\n';
@@ -61,17 +51,18 @@ int main ()
 
     // return 0;
 
-    double joyValL = 0;
-    double joyValR = 0;
+    // ============ DRIVETRAIN TEST =======================
+    // double joyValL = .5;
+    // double joyValR = .6;
 
+    // Drivetrain drivetrain;
+    // double drivetrainOutputs[3]; 
 
-    Elevator elevator = *new Elevator();
-    Drivetrain drivetrain = *new Drivetrain();
+    // while(true) {
+    //     drivetrain.CalculateNextOutput(drivetrainOutputs, sizeof(drivetrainOutputs), joyValL, joyValR, false);
+    //     cout << drivetrainOutputs[0] << ", " << drivetrainOutputs[1] << '\n';
+    // }
 
-    while(true) {
-        cout << drivetrain.CalculateNextOutput(joyValL, joyValR, false)[0] << ", " << &drivetrain.CalculateNextOutput(joyValL, joyValR, false)[1] << '\n';
-        // cout << elevator.CalculateNextOutput(false, false, false, 1, 0) << '\n';
-    }
 
     return 0;
 }

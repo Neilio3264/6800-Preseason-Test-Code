@@ -1,10 +1,13 @@
 #include "Drivetrain.h"
-#include <iostream>
 
-// Drivetrain::Drivetrain() {
-// }
+Drivetrain::Drivetrain() {
+}
 
-double* Drivetrain::CalculateNextOutput(double joyValL, double joyValR, bool shifter) {
+void Drivetrain::CalculateNextOutput(double*outputs, unsigned int size, double joyValL, double joyValR, bool shifter) {
+
+    if (size < 3)
+        return;
+    
     if (InDeadBand(joyValL, joyValR)) {
         outputs[0] = 0;
         outputs[1] = 0;
@@ -18,8 +21,6 @@ double* Drivetrain::CalculateNextOutput(double joyValL, double joyValR, bool shi
     // outputs[0] = 0;
     // outputs[1] = 0;
     // outputs[2] = 0;
-
-    return outputs;
 
 }
 
