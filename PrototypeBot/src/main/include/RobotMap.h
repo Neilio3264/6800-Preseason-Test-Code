@@ -26,19 +26,19 @@
 // constexpr int RANGE_FINDER_MODULE = 1;
 
 //Motor Controller IDs
-constexpr int DRIVE_LEFTMOTOR   	= 3;
-constexpr int DRIVE_RIGHTMOTOR	= 4;
+static constexpr int DRIVE_LEFTMOTOR   	    = 3;
+static constexpr int DRIVE_RIGHTMOTOR	    = 4;
 
-constexpr int LIFT_MOTOR_A 	    = 8;
-constexpr int LIFT_MOTOR_B   		= 9;
+static constexpr int LIFT_MOTOR_A 	        = 8;
+static constexpr int LIFT_MOTOR_B   		= 9;
 
-constexpr int SHIFTER             = 6;  
+static constexpr int SHIFTER                = 6;  
 
-constexpr int CLAMPER             = 3;  
+static constexpr int CLAMPER                = 3;  
 
-constexpr int INTAKE_CUBE_MOTOR_A = 0;
-constexpr int INTAKE_CUBE_MOTOR_B = 1; 
-constexpr int INTAKE_ANGLE_MOTOR	= 0; // NOTE: WRONG PORT (PROBABLY)
+static constexpr int INTAKE_CUBE_MOTOR_A    = 0;
+static constexpr int INTAKE_CUBE_MOTOR_B    = 1; 
+static constexpr int INTAKE_ANGLE_MOTOR 	= 0; // NOTE: WRONG PORT (PROBABLY)
 
 // int ENCODER_DRIVE_A     = 0; 
 // int ENCODER_DRIVE_B     = 1;  

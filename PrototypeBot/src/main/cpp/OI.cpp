@@ -10,8 +10,6 @@
 OI::OI() {
   // Process operator interface input here.
 
-  gamepad = new frc::XboxController(0);
-
   //pedal = new Button(3);
 }
 
@@ -23,6 +21,6 @@ frc::Joystick& OI::getRightJoyDrive() {
   return rightJoyDrive;
 }
 
-frc::XboxController* OI::getGamepad() {
+frc::XboxController& OI::getGamepad() {
   return gamepad;
 }

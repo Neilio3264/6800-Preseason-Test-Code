@@ -6,7 +6,6 @@ ElevatorCalculations::ElevatorCalculations() {
     i_val = .2;
     d_val = .1;
     accuracy = .01;
-    elevatorPID = new PIDControl(p_val, i_val, d_val, 0, 0, 0);
     dt = 0.02;
 }
 
@@ -68,7 +67,7 @@ double ElevatorCalculations::CalculateNextAutoOutput(int targetSetPoint, double 
 
     // std::cout << targetEncoder << " " << p_val << " " << currEncoder << " " << accuracy << " " << dt << "\n";
 
-    output = elevatorPID->PID_Loop(targetEncoder, p_val, 0, d_val, currEncoder, accuracy, dt);
+    output = elevatorPID.PID_Loop(targetEncoder, p_val, 0, d_val, currEncoder, accuracy, dt);
 
     if(output == -100) {
         return LIFT_BASE_POWER;

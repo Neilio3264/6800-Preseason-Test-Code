@@ -16,15 +16,17 @@
 #include <frc/drive/DifferentialDrive.h>
 
 class Drivetrain : public frc::Subsystem {
- public:
-   Drivetrain();
-   
-   void InitDefaultCommand();
+  public:
+    Drivetrain();
+  
+    void InitDefaultCommand();
 
-   void TankDrive(double leftPower, double rightPower);
- private:
-   frc::VictorSP motorLeft{3};
-   frc::VictorSP motorRight{4};
+    void TankDrive(double leftPower, double rightPower);  
+  private:
 
-   frc::DifferentialDrive _robotDrive{motorLeft, motorRight};
+    frc::VictorSP motorLeft{3};
+    frc::VictorSP motorRight{4};
+
+    frc::DifferentialDrive _robotDrive{motorLeft, motorRight};
+
 };

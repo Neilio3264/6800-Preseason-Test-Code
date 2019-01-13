@@ -14,10 +14,8 @@ public:
     void End();
     void Interrupted();
 
-    // double output[3];
-
 private:
-    DrivetrainCalculations* calculationsDrivetrain;
-
-    double left, right;
+    DrivetrainCalculations calculationsDrivetrain;
+    double drivetrainOutputs[3];
+ 
 };

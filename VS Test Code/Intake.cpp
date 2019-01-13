@@ -1,6 +1,6 @@
-#include "Calculations/IntakeCalculations.h"
+#include "Intake.h"
 
-IntakeCalculations::IntakeCalculations() {
+Intake::Intake() {
     angleSetpoint = MANUAL_MODE;
     intakeState = MANUAL_MODE;
     clampState = MANUAL_MODE;
@@ -8,7 +8,7 @@ IntakeCalculations::IntakeCalculations() {
     double output[3] = {0.0, 0.0, 0.0};
 }
 
-void IntakeCalculations::CalculateNextOutput(double* output, unsigned int size, double leftTrig, double rightTrig, bool bumper, double rightStick, bool set1, bool set2, double currEncoder) {
+void Intake::CalculateNextOutput(double* output, unsigned int size, double leftTrig, double rightTrig, bool bumper, double rightStick, bool set1, bool set2, double currEncoder) {
 
     if(size < 3) {
         return;
@@ -48,7 +48,7 @@ void IntakeCalculations::CalculateNextOutput(double* output, unsigned int size, 
     }
 }
 
-double IntakeCalculations::CalculateNextOutputAuto(double currEncoder, int angleSetpoint) {
+double Intake::CalculateNextOutputAuto(double currEncoder, int angleSetpoint) {
 
     if( abs(currEncoder - angleSetpoint) < .02) { return 0;}
 
@@ -65,16 +65,16 @@ double IntakeCalculations::CalculateNextOutputAuto(double currEncoder, int angle
 
 }
 
-void IntakeCalculations::UpdateAngleSetpoint(bool set1, bool set2) {
+void Intake::UpdateAngleSetpoint(bool set1, bool set2) {
     if (set1) { angleSetpoint = UP; }
     if (set2) { angleSetpoint = DOWN; }
 }
 
-bool IntakeCalculations::InDeadBand(double rightStick) {
+bool Intake::InDeadBand(double rightStick) {
     return rightStick < .05;
 }
 
-bool IntakeCalculations::InDeadBand(double leftVal, double rightVal) {
+bool Intake::InDeadBand(double leftVal, double rightVal) {
     if(leftVal > .05 && rightVal > .05) {
         return true;
     }

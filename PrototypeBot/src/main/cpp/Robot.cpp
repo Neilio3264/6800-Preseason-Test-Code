@@ -18,9 +18,9 @@ Intake Robot::_intake;
 OI Robot::_oi;
 
 void Robot::RobotInit() {
-  frc::SmartDashboard::PutData(&_drivetrain);
-  frc::SmartDashboard::PutData(&_elevator);
-  frc::SmartDashboard::PutData(&_intake);
+  // frc::SmartDashboard::PutData(&_drivetrain);
+  // frc::SmartDashboard::PutData(&_elevator);
+  // frc::SmartDashboard::PutData(&_intake);
 
   m_chooser.SetDefaultOption("Default Auto", &m_defaultAuto);
   m_chooser.AddOption("My Auto", &m_myAuto);
@@ -92,6 +92,11 @@ void Robot::TestPeriodic() {}
 void Robot::DisabledInit() {}
 
 void Robot::DisabledPeriodic() {}
+
+// void Robot::Log() {
+//   frc::SmartDashboard::PutNumber("Joystick Left Value: ", _oi.getLeftJoyDrive().GetY());
+//   frc::SmartDashboard::PutNumber("Joystick Right Value: ", _oi.getRightJoyDrive().GetY());
+// }
 
 #ifndef RUNNING_FRC_TESTS
 int main() { return frc::StartRobot<Robot>(); }

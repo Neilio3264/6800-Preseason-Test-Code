@@ -1,17 +1,18 @@
-#pragma once
+#ifndef DrivetrainCalculations_H
+#define DrivetrainCalculations_H
+
+using namespace std;
 
 #include "../utilities/PIDControl.h"
 #include <cmath>
 
-class DrivetrainCalculations {
-
+class DrivetrainCalculations{
 public:
-    DrivetrainCalculations();
 
-    bool InDeadBand(double joyValL, double joyValR);
-    double* CalculateNextOutput(double joyValL, double joyValR, bool shifter);
+	DrivetrainCalculations();
+    bool InDeadBand(double, double);
+    void CalculateNextOutput(double*, unsigned int, double, double, bool);
     
-
-private:
-    double outputs[3];
 };
+
+#endif  

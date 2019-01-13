@@ -17,5 +17,7 @@ public:
     void Interrupted();
 
 private:
-    IntakeCalculations* calculationsIntake;
+    IntakeCalculations calculationsIntake;
+    double intakeOutputs[3];
+
 };

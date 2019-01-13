@@ -1,6 +1,8 @@
 #ifndef Elevator_H
 #define Elevator_H
 
+using namespace std;
+
 #include "PIDControl.h"
 #include <cmath>
 

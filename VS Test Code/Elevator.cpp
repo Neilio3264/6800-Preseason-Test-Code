@@ -1,6 +1,7 @@
 #include "Elevator.h"
 #include <iostream>
 
+
 double ELEVATOR_IDLE_MOTOR_POWER = 0.08;
 
 Elevator::Elevator() {
@@ -15,9 +16,9 @@ Elevator::Elevator() {
 
 double Elevator::CalculateNextOutput(bool set1, bool set2, bool set3, double joyVal, double encoder) {
 
-    if(targetSetPoint == 1 && abs(encoder - .15) <= .01) { targetSetPoint = 0; }
-    if(targetSetPoint == 2 && abs(encoder - .4) <= .01) { targetSetPoint = 0; }
-    if(targetSetPoint == 3 && abs(encoder - .6) <= .01) { targetSetPoint = 0; }
+    if(targetSetPoint == 1 && std::abs(encoder - .15) <= .01) { targetSetPoint = 0; }
+    if(targetSetPoint == 2 && std::abs(encoder - .4) <= .01) { targetSetPoint = 0; }
+    if(targetSetPoint == 3 && std::abs(encoder - .6) <= .01) { targetSetPoint = 0; }
 
     if (!InDeadBand(joyVal)) {
         // For sure in manual mode, set targetSetPoint to 0;
@@ -37,7 +38,7 @@ double Elevator::CalculateNextOutput(bool set1, bool set2, bool set3, double joy
 }
 
 bool Elevator::InDeadBand(double joyVal) {
-    return abs(joyVal) <= .05;
+    return std::abs(joyVal) <= .05;
 }
 
 void Elevator::UpdateTargetSetpoint(bool set1, bool set2, bool set3) {

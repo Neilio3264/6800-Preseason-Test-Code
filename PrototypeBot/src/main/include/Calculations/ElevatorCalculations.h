@@ -7,6 +7,8 @@
 
 #pragma once
 
+using namespace std;
+
 #include <frc/commands/Subsystem.h>
 #include "../utilities/PIDControl.h"
 #include "../utilities/Constants.h"
@@ -22,7 +24,7 @@ class ElevatorCalculations {
     double accuracy;
     double dt;
     int targetSetPoint;
-    PIDControl *elevatorPID;
+    PIDControl elevatorPID{p_val, i_val, d_val, 0, 0, 0};
 
     bool InDeadBand(double joyVal);
     void UpdateTargetSetpoint(bool set1, bool set2, bool set3);
@@ -32,4 +34,5 @@ class ElevatorCalculations {
  private:
   // It's desirable that everything possible under private except
   // for methods that implement subsystem capabilities
+  
 };

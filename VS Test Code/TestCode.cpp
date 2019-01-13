@@ -22,34 +22,46 @@ int main ()
 {
     // ============ INTAKE TEST =========================
 
-    Intake intake;
-    
-
-    // ============ ELEVATOR TEST =======================
-    // bool set1 = false;
-    // bool set2 = false;
-    // bool set3 = false;
-    // double joyVal = 1;
+    // double trigL = 0;
+    // double trigR = 1;
+    // bool bumper = false;
+    // double stickR = .5;
+    // bool set_1 = 0;
+    // bool set_2 = 0;
     // double encoder = 0;
 
-    // double output = 0;
-
-    // Elevator elevator;
+    // Intake intake;
+    // double intakeOutputs[3];
 
     // while(true) {
+    //   intake.CalculateNextOutput(intakeOutputs, sizeof(intakeOutputs), trigL, trigR, bumper, stickR, set_1, set_2, encoder);
+    //   cout << "Speed: " << intakeOutputs[0] << ", " << "Clamp? " << intakeOutputs[1] << ", " << "Angle: " << intakeOutputs[2] << '\n';
+    // } 
 
-    //     output = elevator.CalculateNextOutput(set1, set2, set3, joyVal, encoder);
-    //     cout << output << '\n';
-    //     encoder = encoder + .01;
+    // ============ ELEVATOR TEST =======================
+    bool set1 = false;
+    bool set2 = false;
+    bool set3 = false;
+    double joyVal = .6;
+    double encoder = 0;
 
-    //     set1 = false;
-    //     set2 = false;
-    //     set3 = false;
-    // }
+    double output = 0;
+    Elevator elevator;
 
-    // cout << elevator.CalculateNextOutput(set1, set2, set3, joyVal, encoder) << '\n';
+    while(true) {
 
-    // return 0;
+        output = elevator.CalculateNextOutput(set1, set2, set3, joyVal, encoder);
+        cout << output << '\n';
+        encoder = encoder + .01;
+
+        set1 = false;
+        set2 = false;
+        set3 = false;
+    }
+
+    cout << elevator.CalculateNextOutput(set1, set2, set3, joyVal, encoder) << '\n';
+
+    return 0;
 
     // ============ DRIVETRAIN TEST =======================
     // double joyValL = .5;
@@ -63,6 +75,5 @@ int main ()
     //     cout << drivetrainOutputs[0] << ", " << drivetrainOutputs[1] << '\n';
     // }
 
-
-    return 0;
+    // return 0;
 }

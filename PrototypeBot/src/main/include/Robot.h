@@ -43,6 +43,6 @@ class Robot : public frc::TimedRobot {
   void DisabledInit() override;
   void DisabledPeriodic() override;
 
-  void Log();
+  // void Log();
 };
 
